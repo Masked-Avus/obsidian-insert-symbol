@@ -17,10 +17,10 @@ import {
     Icon
 } from "./ui/utils";
 
-import InternalSymbolGroup from "./symbol/internal-symbol-group";
 import InsertSymbolPlugin from "./main";
 import Table from "./ui/element/table";
 import AssignInsertionCommandsModal from "./ui/modal/assign-insertion-modal";
+import EditCustomSymbolGroupModal from "./ui/modal/edit-custom-symbol-table-modal";
 
 export interface InsertSymbolPluginSettings {
     recentSymbols: CustomSymbolGroupData;
@@ -92,7 +92,7 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
                 // Icon is temporary
                 .setIcon(Icon.TABLE)
                 .onClick(() => {
-                    console.log("Custom symbol table modal has not been added yet");
+                    new EditCustomSymbolGroupModal(this.plugin).open();
                 }
             )
         );
