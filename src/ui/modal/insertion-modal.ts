@@ -10,7 +10,7 @@ import {
 
 import {
     updateRecentSymbols
-} from "../../plugin-settings";
+} from "../../settings";
 
 import {
     CssClass,

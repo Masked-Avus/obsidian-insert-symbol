@@ -8,7 +8,7 @@ import {
 	InsertSymbolPluginSettings,
 	InsertSymbolPluginSettingTab,
 	DEFAULT_SETTINGS
-} from "./plugin-settings";
+} from "./settings";
 
 import {
     UiEvent

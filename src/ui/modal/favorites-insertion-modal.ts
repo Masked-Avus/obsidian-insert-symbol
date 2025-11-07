@@ -5,7 +5,7 @@ import {
 
 import {
     updateRecentSymbols
-} from "src/plugin-settings";
+} from "src/settings";
 
 import InsertSymbolPlugin from "src/main";
 import Table from "src/ui/element/table";
