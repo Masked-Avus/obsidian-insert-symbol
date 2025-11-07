@@ -17,6 +17,8 @@ import InsertSymbolPlugin from "../../main";
 import Table from "../element/table";
 
 export default class AssignInsertionCommandsModal extends Modal {
+    private static readonly TITLE: string = "Favorite Symbol Assignment";
+
     private plugin: InsertSymbolPlugin;
     private container: HTMLElement;
     private symbolTables: SymbolTableCollection;
@@ -26,7 +28,7 @@ export default class AssignInsertionCommandsModal extends Modal {
         super(plugin.app);
         this.plugin = plugin;
 
-        this.setTitle("Favorite Symbol Assignment");
+        this.setTitle(AssignInsertionCommandsModal.TITLE);
     }
 
     onOpen() {

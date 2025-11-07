@@ -11,6 +11,7 @@ import InsertSymbolPlugin from "src/main";
 import Table from "src/ui/element/table";
 
 export default class InsertFavoriteSymbolModal extends Modal {
+    private static readonly TITLE: string = "Favorite Symbols";
     private container: HTMLElement;
     private plugin: InsertSymbolPlugin;
     private editor: Editor;
@@ -21,7 +22,7 @@ export default class InsertFavoriteSymbolModal extends Modal {
         this.plugin = plugin;
         this.editor = editor;
 
-        this.setTitle("Favorite Symbols");
+        this.setTitle(InsertFavoriteSymbolModal.TITLE);
     }
 
     onOpen(): void {
