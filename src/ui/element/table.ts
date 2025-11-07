@@ -1,4 +1,8 @@
 import {
+    Utf16Symbol
+} from "src/symbol/types";
+
+import {
     CssClass,
     setCell,
     UiEvent
@@ -15,7 +19,7 @@ export default class Table implements Displayable {
 
     constructor(
         container: HTMLElement,
-        contents: string[],
+        contents: Utf16Symbol[],
         onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void
         ) {
 
@@ -45,7 +49,7 @@ export default class Table implements Displayable {
         this.tableRef.hidden = true;
     }
 
-    private build(symbols: string[]): void {
+    private build(symbols: Utf16Symbol[]): void {
         this.tableRef = this.container.createEl("table");
         this.tableRef.addClass(CssClass.TABLE);
 

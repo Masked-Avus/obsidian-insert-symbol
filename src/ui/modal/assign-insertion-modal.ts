@@ -31,7 +31,7 @@ export default class AssignInsertionCommandsModal extends Modal {
         this.setTitle(AssignInsertionCommandsModal.TITLE);
     }
 
-    onOpen() {
+    onOpen(): void {
         this.initializeContainer();
         
         this.assignmentTable = new InsertionCommandsAssignmentTable(this.plugin, this.container);
@@ -45,17 +45,17 @@ export default class AssignInsertionCommandsModal extends Modal {
         );
     }
 
-    onClose() {
+    onClose(): void {
         this.cleanUpContainer();
     }
 
-    private initializeContainer() {
+    private initializeContainer(): void {
         this.container = this.contentEl;
         this.container.empty();
         this.container.addClass(CssClass.MODAL);
     }
 
-    private cleanUpContainer() {
+    private cleanUpContainer(): void {
         this.contentEl.empty();
     }
 }
