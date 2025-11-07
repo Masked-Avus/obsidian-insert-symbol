@@ -30,7 +30,6 @@ export default class SymbolCollection {
         }
 
         this.symbols.push(symbols);
-        this.symbols.sort((first, second) => first.getSortOrder() - second.getSortOrder());
 
         return true;
     }

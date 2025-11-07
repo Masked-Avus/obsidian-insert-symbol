@@ -9,14 +9,12 @@ export default class InternalSymbolGroup implements SymbolGroup {
     private readonly name: string;
     private readonly description?: string;
     private readonly symbols: Utf16Range;
-    private readonly sortOrder: number = 0;
     //private isActive: boolean = true;
 
-    constructor(name: string, symbols: Utf16Range, sortOrder: number, description: string | undefined) {
+    constructor(name: string, symbols: Utf16Range, description: string | undefined) {
         this.name = name;
         this.symbols = symbols;
         this.description = description;
-        this.sortOrder = sortOrder;
     }
 
     getName(): string {
@@ -25,10 +23,6 @@ export default class InternalSymbolGroup implements SymbolGroup {
 
     getDescription(): string | undefined {
         return this.description;
-    }
-
-    getSortOrder(): number {
-        return this.sortOrder;
     }
 
     getSymbols(): Utf16Symbol[] {
