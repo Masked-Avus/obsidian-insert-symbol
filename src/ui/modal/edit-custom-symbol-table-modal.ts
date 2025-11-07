@@ -52,8 +52,6 @@ export default class EditCustomSymbolGroupModal extends Modal {
                 console.log("built-in table cell clicked");
             }
         );
-        
-        // TODO: Crate all internal symbol tables
     }
 
     onClose() {
