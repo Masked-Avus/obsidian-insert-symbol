@@ -6,8 +6,7 @@ import {
 import {
     createParagraph,
     CssClass,
-    Icon,
-    swapOutClass
+    Icon
 } from "../utils";
 
 import {
@@ -29,7 +28,6 @@ export default class EditCustomSymbolGroupModal extends Modal {
     private plugin: InsertSymbolPlugin;
     private customTable: CustomSymbolTable;
     private builtinTables: SymbolTableCollection;
-    // TODO: Reference to table.
 
     constructor(plugin: InsertSymbolPlugin) {
         super(plugin.app);
@@ -40,6 +38,7 @@ export default class EditCustomSymbolGroupModal extends Modal {
     onOpen() {
         this.initializeContainer();
         this.addClearTableButton();
+
         // TODO: Put in instructions
         createParagraph(this.container, "Instructions on how to use editing table go here", CssClass.HELPER_TEXT);
 
