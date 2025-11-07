@@ -89,7 +89,7 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
         );
     }
 
-    private addEditCustomSymbolGroupButton() {
+    private addEditCustomSymbolGroupButton(): void {
         new Setting(this.container)
             .setName("Edit custom symbol table")
             .setDesc("Assign existing symbols into a custom table.")

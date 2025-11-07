@@ -20,6 +20,7 @@ import {
 } from "src/symbol/custom-symbol-group";
 
 import InsertSymbolPlugin from "src/main";
+import SelectableCell from "../element/selectable-cell";
 
 export default class EditCustomSymbolGroupModal extends Modal {
     private static readonly TITLE: string = "Edit Custom Symbol Table";
@@ -85,7 +86,7 @@ export default class EditCustomSymbolGroupModal extends Modal {
 class CustomSymbolTable {
     private container: HTMLElement;
     private plugin: InsertSymbolPlugin;
-    private selectedCell: HTMLTableCellElement | null = null;
+    private currentCell: SelectableCell = new SelectableCell();
     private display: SymbolTableDisplay;
 
     constructor(container: HTMLElement, plugin: InsertSymbolPlugin) {
@@ -107,19 +108,11 @@ class CustomSymbolTable {
     }
 
     selectCell(cell: HTMLTableCellElement): void {
-        if (this.selectedCell !== null) {
-            this.unselectCell();
-        }
-
-        swapOutClass(cell, CssClass.TABLE_CELL, CssClass.SELECTED_TABLE_CELL);
-        this.selectedCell = cell;
+        this.currentCell.select(cell);
     }
 
     unselectCell(): void {
-        if (this.selectedCell !== null) {
-            swapOutClass(this.selectedCell, CssClass.SELECTED_TABLE_CELL, CssClass.TABLE_CELL);
-            this.selectedCell = null;
-        }
+        this.currentCell.unselect();
     }
 
     private get customSymbols(): CustomSymbolGroupData {

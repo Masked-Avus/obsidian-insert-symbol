@@ -8,13 +8,12 @@ import {
 } from "../table-display";
 
 import {
-    CssClass,
-    setCell,
-    swapOutClass
+    CssClass
 } from "../utils";
 
 import InsertSymbolPlugin from "../../main";
 import Table from "../element/table";
+import SelectableCell from "../element/selectable-cell";
 
 export default class AssignInsertionCommandsModal extends Modal {
     private static readonly TITLE: string = "Favorite Symbol Assignment";
@@ -65,7 +64,7 @@ class InsertionCommandsAssignmentTable {
 
     private container: HTMLElement;
     private plugin: InsertSymbolPlugin;
-    private selectedCell: HTMLTableCellElement | null = null;
+    private currentCell: SelectableCell = new SelectableCell();
     private display: SymbolTableDisplay;
 
     constructor(
@@ -88,10 +87,14 @@ class InsertionCommandsAssignmentTable {
     async update(symbol: string): Promise<void> {
         const symbols = this.plugin.settings.favoriteSymbols.symbols;
 
-        if ((this.selectedCell !== null)) {
-            setCell(this.selectedCell, symbol);
+        if (this.currentCell.isSelected()) {
+            this.currentCell.setText(symbol);
 
-            this.plugin.settings.favoriteSymbols.symbols[this.findCellIndex()] = this.selectedCell.getText();
+            const text = this.currentCell.getText();
+
+            if (text !== undefined) {
+                this.plugin.settings.favoriteSymbols.symbols[this.findCellIndex()] = text;
+            }
 
             await this.plugin.saveSettings();
             this.unselectCell();
@@ -99,23 +102,15 @@ class InsertionCommandsAssignmentTable {
     }
 
     selectCell(cell: HTMLTableCellElement): void {
-        if (this.selectedCell !== null) {
-            this.unselectCell();
-        }
-
-        swapOutClass(cell, CssClass.TABLE_CELL, CssClass.SELECTED_TABLE_CELL);
-        this.selectedCell = cell;
+        this.currentCell.select(cell);
     }
 
     unselectCell(): void {
-        if (this.selectedCell !== null) {
-            swapOutClass(this.selectedCell, CssClass.SELECTED_TABLE_CELL, CssClass.TABLE_CELL);
-            this.selectedCell = null;
-        }
+        this.currentCell.unselect();
     }
 
     private findCellIndex(): number {
-        if (this.selectedCell === null) {
+        if (this.currentCell === null) {
             throw new Error("Cannot find cell because no cell has been selected");
         }
 
@@ -124,7 +119,7 @@ class InsertionCommandsAssignmentTable {
         for (let i = 0; i < Table.MAX_COLUMNS; i++) {
             const cell = this.display.getCell(0, i);
             
-            if (cell === this.selectedCell) {
+            if ((cell !== null) && this.currentCell.equals(cell)) {
                 columnIndex = i;
                 break;
             }
