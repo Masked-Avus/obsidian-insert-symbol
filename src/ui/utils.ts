@@ -14,6 +14,7 @@ export enum Icon {
     PLUS = "plus",
     TRASH = "trash-2",
     SWATCH_BOOK = "swatch-book",
+    TABLE = "table",
     RESTORE = "archive-restore",
     DOWN = "chevron-down",
     UP = "chevron-up"

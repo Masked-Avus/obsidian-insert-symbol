@@ -62,6 +62,7 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
     display(): void {
         this.initializeContainer();
         this.addAssignInsertionCommandsButton();
+        this.addEditCustomSymbolGroupButton();
     }
 
     private initializeContainer(): void {
@@ -78,6 +79,20 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
                 .setIcon(Icon.SWATCH_BOOK)
                 .onClick(() => {
                     new AssignInsertionCommandsModal(this.plugin).open();
+                }
+            )
+        );
+    }
+
+    private addEditCustomSymbolGroupButton() {
+        new Setting(this.container)
+            .setName("Edit custom symbol table")
+            .setDesc("Assign existing symbols into a custom table.")
+            .addButton(button => button
+                // Icon is temporary
+                .setIcon(Icon.TABLE)
+                .onClick(() => {
+                    console.log("Custom symbol table modal has not been added yet");
                 }
             )
         );
