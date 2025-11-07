@@ -1,0 +1,10 @@
+{
+	"id": "insert-symbol",
+	"name": "Insert Symbol",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Provides a means of inserting Unicode symbols via a menu or hotkeys.",
+	"author": "Masked Avus",
+	"authorUrl": "https://obsidian.md",
+	"isDesktopOnly": true
+}

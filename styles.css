@@ -1,0 +1,70 @@
+.plugin-modal {
+    background: var(--modal-background);
+    height: var(--modal-height);
+    max-height: var(--modal-max-height);
+}
+
+.symbol-table {
+    width: 100%;
+    background-color: var(--table-background);/*var(--interactive-hover);*/
+    table-layout: fixed;
+}
+
+.symbol-table, .symbol-table-cell, .selected-symbol-table-cell {
+    border-color: var(--table-border-color);/*black;*/
+    border-width: var(--table-border-width);/*var(--border-width);*/
+    border-style: solid;
+    border-radius: var(--radius-m);
+    padding: 4px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.symbol-table-cell {
+    font-size: var(--table-text-size);/*var(--font-text-size);*/
+    background-color: var(--table-background);/*var(--interactive-normal);*/
+    width: var(--icon-size);
+}
+
+.symbol-table-cell:hover {
+    background-color: var(--interactive-accent);
+}
+
+.selected-symbol-table-cell {
+    font-size: var(--font-text-size);
+    background-color: var(--interactive-accent);
+    width: var(--icon-size);
+}
+
+.title-heading {
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 100%;
+    border-width: var(--border-width);
+    border-radius: var(--radius-m);
+}
+
+.title-heading {
+    padding: 4px;
+}
+
+.title-heading {
+    background-color: var(--interactive-normal);
+}
+
+.title-heading:hover {
+    background-color: var(--interactive-accent);
+}
+
+.settings-heading {
+    font: var(--font-interface-theme);
+    font-size: var(--font-ui-large);
+    font-weight: var(--font-bold);
+}
+
+.helper-text {
+    font-size: var(--font-ui-smaller);
+    font-weight: var(--font-extralight);
+}
