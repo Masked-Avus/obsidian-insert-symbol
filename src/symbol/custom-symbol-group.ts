@@ -5,8 +5,7 @@ import {
 
 export class CustomSymbolGroup implements SymbolGroup {
     constructor(
-        private readonly data: CustomSymbolGroupData,
-        private file: string
+        private readonly data: CustomSymbolGroupData
         ) {
 
         CustomSymbolGroupData.assertIsValid(this.data);
@@ -22,10 +21,6 @@ export class CustomSymbolGroup implements SymbolGroup {
 
     getSymbols(): Utf16Symbol[] {
         return this.data.symbols;
-    }
-
-    getFile(): string {
-        return this.file;
     }
 }
 
