@@ -78,4 +78,3 @@ export class SymbolTableDisplay {
         return this.table.getRow(rowIndex);
     }
 }
-

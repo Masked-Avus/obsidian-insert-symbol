@@ -48,6 +48,10 @@ export default class Table implements Displayable {
     private build(symbols: string[]): void {
         this.tableRef = this.container.createEl("table");
         this.tableRef.addClass(CssClass.TABLE);
+
+        if (symbols.length === 0) {
+            return;
+        }
         
         let cellPosition = 1;
         let row = this.tableRef.insertRow();

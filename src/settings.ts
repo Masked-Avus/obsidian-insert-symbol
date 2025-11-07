@@ -26,7 +26,7 @@ export interface InsertSymbolPluginSettings {
     recentSymbols: CustomSymbolGroupData;
     favoriteSymbols: CustomSymbolGroupData;
     lastSymbol: Utf16Symbol;
-    //customSymbolGroup: CustomSymbolGroupData;
+    customSymbolGroup: CustomSymbolGroupData;
 }
 
 export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
@@ -41,7 +41,12 @@ export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
         getEmptySymbolArray(),
         "Symbols currently assigned to the insertion commands."
     ),
-    lastSymbol: getDefaultSymbol()
+    lastSymbol: getDefaultSymbol(),
+    customSymbolGroup: new CustomSymbolGroupData(
+        "Custom",
+        [],
+        "User-defined group of symbols."
+    )
 }
 
 export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {

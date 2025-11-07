@@ -75,7 +75,6 @@ class InsertionCommandsAssignmentTable {
         
         this.container = container;
         this.plugin = plugin;
-
         this.display = new SymbolTableDisplay(
             this.container,
             this.plugin.settings.favoriteSymbols.symbols,
