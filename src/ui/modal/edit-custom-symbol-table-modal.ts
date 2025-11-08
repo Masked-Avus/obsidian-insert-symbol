@@ -10,15 +10,12 @@ import {
 } from "../utils";
 
 import {
-    SymbolTableCollection,
-    SymbolTableDisplay
-} from "../table-display";
-
-import {
     CustomSymbolGroupData
 } from "src/symbol/custom-symbol-group";
 
 import InsertSymbolPlugin from "src/main";
+import SymbolTableDisplay from "../table-display";
+import SymbolTableCollection from "../table-collection";
 import SelectableCell from "../element/selectable-cell";
 
 export default class EditCustomSymbolGroupModal extends Modal {
@@ -35,7 +32,7 @@ export default class EditCustomSymbolGroupModal extends Modal {
         this.setTitle(EditCustomSymbolGroupModal.TITLE);
     }
 
-    onOpen() {
+    onOpen(): void {
         this.initializeContainer();
         this.addClearTableButton();
 
@@ -54,21 +51,21 @@ export default class EditCustomSymbolGroupModal extends Modal {
         );
     }
 
-    onClose() {
+    onClose(): void {
         this.cleanUpContainer();
     }
 
-    private initializeContainer() {
+    private initializeContainer(): void {
         this.container = this.contentEl;
         this.container.empty();
         this.container.addClass(CssClass.MODAL);
     }
 
-    private cleanUpContainer() {
+    private cleanUpContainer(): void {
         this.contentEl.empty();
     }
 
-    private addClearTableButton() {
+    private addClearTableButton(): void {
         new Setting(this.container)
             .setName("Clear table")
             .addButton(button => button
@@ -96,6 +93,8 @@ class CustomSymbolTable {
             this.customSymbols.symbols,
             this.customSymbols.name,
             (cell: HTMLTableCellElement) => {
+                // 1. If [this.currentCell] is selected already, swap the text of [cell] and [this.currentCell]; then, [this.currentCell.unselect()] and exit callback.
+                // 2. Otherwise, perform the following.
                 this.selectCell(cell);
             },
             this.customSymbols.description

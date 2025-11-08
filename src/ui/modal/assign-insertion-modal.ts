@@ -3,15 +3,12 @@ import {
 } from "obsidian";
 
 import {
-    SymbolTableCollection,
-    SymbolTableDisplay,
-} from "../table-display";
-
-import {
     CssClass
 } from "../utils";
 
 import InsertSymbolPlugin from "../../main";
+import SymbolTableDisplay from "../table-display";
+import SymbolTableCollection from "../table-collection";
 import Table from "../element/table";
 import SelectableCell from "../element/selectable-cell";
 

@@ -4,11 +4,6 @@ import {
 } from "obsidian";
 
 import {
-    SymbolTableCollection,
-    SymbolTableDisplay
-} from "../table-display";
-
-import {
     updateRecentSymbols
 } from "../../settings";
 
@@ -18,6 +13,8 @@ import {
 } from "../utils";
 
 import InsertSymbolPlugin from "../../main";
+import SymbolTableDisplay from "../table-display";
+import SymbolTableCollection from "../table-collection";
 
 export default class InsertSymbolModal extends Modal {
     private static readonly TITLE = "Symbol Inserter";
