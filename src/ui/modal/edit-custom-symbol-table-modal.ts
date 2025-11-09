@@ -173,7 +173,6 @@ class CustomSymbolTable {
     }
 
     clear(): void {
-        console.log("Clearing custom table has not been implemented yet");
-        //this.tableRef?.clearCells();
+        this.tableRef?.clearCells();
     }
 }
