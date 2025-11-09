@@ -36,10 +36,6 @@ export function swapOutClass(element: HTMLElement, classToRemove: string, classT
     element.addClass(classToAdd);
 }
 
-export function setCell(cell: HTMLTableCellElement, symbol: string): void {
-    cell.setText(symbol);
-}
-
 export function overwriteTableRow(row: HTMLTableRowElement, symbols: string[]): void {
     if (row.cells.length !== symbols.length) {
         logError(new Error(`Unequal number of row cells (${row.cells.length}) and available recent symbols (${symbols.length}).`));
@@ -50,7 +46,7 @@ export function overwriteTableRow(row: HTMLTableRowElement, symbols: string[]): 
         const cell = row.cells.item(i);
         
         if (cell !== null) {
-            setCell(cell, symbols[i]);
+            cell.setText(symbols[i]);
         }
     }
 }

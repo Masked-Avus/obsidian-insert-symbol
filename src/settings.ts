@@ -9,24 +9,18 @@ import {
     Utf16Symbol,
 } from "./symbol/types";
 
-import {
-    CustomSymbolGroupData
-} from "./symbol/custom-symbol-group";
-
-import {
-    Icon
-} from "./ui/utils";
-
+import { CustomSymbolGroupData } from "./symbol/custom-symbol-group";
+import { Icon } from "./ui/utils";
 import InsertSymbolPlugin from "./main";
-import Table from "./ui/element/table";
+import StaticTable from "./ui/element/static-table";
 import AssignInsertionCommandsModal from "./ui/modal/assign-insertion-modal";
 import EditCustomSymbolGroupModal from "./ui/modal/edit-custom-symbol-table-modal";
 
 export interface InsertSymbolPluginSettings {
     recentSymbols: CustomSymbolGroupData;
     favoriteSymbols: CustomSymbolGroupData;
-    lastSymbol: Utf16Symbol;
     customSymbolGroup: CustomSymbolGroupData;
+    lastSymbol: Utf16Symbol;
 }
 
 export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
@@ -41,12 +35,12 @@ export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
         getEmptySymbolArray(),
         "Symbols currently assigned to the insertion commands."
     ),
-    lastSymbol: getDefaultSymbol(),
     customSymbolGroup: new CustomSymbolGroupData(
         "Custom",
         [],
         "User-defined group of symbols."
-    )
+    ),
+    lastSymbol: getDefaultSymbol()
 }
 
 export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {
@@ -105,9 +99,9 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
 }
 
 function getEmptySymbolArray(): string[] {
-    const array: string[] = new Array(Table.MAX_COLUMNS);
+    const array: string[] = new Array(StaticTable.MAX_COLUMNS);
 
-    for (let i = 0; i < Table.MAX_COLUMNS; i++) {
+    for (let i = 0; i < StaticTable.MAX_COLUMNS; i++) {
         array[i] = i.toString();
     }
 

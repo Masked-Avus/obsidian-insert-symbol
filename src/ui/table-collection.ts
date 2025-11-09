@@ -1,11 +1,13 @@
 import InsertSymbolPlugin from "src/main";
 import InternalSymbolGroup from "src/symbol/internal-symbol-group";
 import SymbolTableDisplay from "./table-display";
+import StaticTableFactory from "./factory/static-table-factory";
 
 export default class SymbolTableCollection {
     private plugin: InsertSymbolPlugin;
     private container: HTMLElement;
     private onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void;
+    private tableFactory: StaticTableFactory = new StaticTableFactory();
 
     constructor(
         container: HTMLElement,
@@ -37,6 +39,7 @@ export default class SymbolTableCollection {
             symbolGroup.getSymbols(),
             symbolGroup.getName(),
             this.onClickCallback,
+            this.tableFactory,
             symbolGroup.getDescription()
         );
     }

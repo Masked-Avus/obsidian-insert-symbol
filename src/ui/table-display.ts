@@ -1,10 +1,8 @@
-import {
-    Utf16Symbol
-} from "src/symbol/types";
-
+import { Utf16Symbol } from "src/symbol/types";
 import Break from "./element/break";
 import Table from "./element/table";
 import TableHeading from "./element/heading";
+import TableFactory from "./factory/types";
 
 export default class SymbolTableDisplay {
     private readonly heading: TableHeading;
@@ -16,16 +14,22 @@ export default class SymbolTableDisplay {
         symbols: Utf16Symbol[],
         title: string,
         onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void,
-        description?: string
+        tableFactory: TableFactory,
+        description?: string,
+        onElementsCreatedCallback?: (heading: TableHeading, table: Table) => void
         ) {
 
         container = container;
         this.heading = new TableHeading(container, title, description);
-        this.table = new Table(container, symbols, onClickCallback);
+        this.table = tableFactory.createTable(container, symbols, onClickCallback);
         this.break = new Break(container);
 
         this.heading.addListener(this.table);
         this.heading.addListener(this.break);
+
+        if (onElementsCreatedCallback !== undefined) {
+            onElementsCreatedCallback(this.heading, this.table);
+        }
     }
 
     getCell(rowIndex: number, columnIndex: number): HTMLTableCellElement | null {

@@ -1,16 +1,11 @@
-import {
-    Modal
-} from "obsidian";
-
-import {
-    CssClass
-} from "../utils";
-
+import { Modal } from "obsidian";
+import { CssClass } from "../utils";
 import InsertSymbolPlugin from "../../main";
 import SymbolTableDisplay from "../table-display";
 import SymbolTableCollection from "../table-collection";
-import Table from "../element/table";
+import StaticTable from "../element/static-table";
 import SelectableCell from "../element/selectable-cell";
+import StaticTableFactory from "../factory/static-table-factory";
 
 export default class AssignInsertionCommandsModal extends Modal {
     private static readonly TITLE: string = "Favorite Symbol Assignment";
@@ -77,7 +72,8 @@ class InsertionCommandsAssignmentTable {
             InsertionCommandsAssignmentTable.TITLE,
             (cell: HTMLTableCellElement) => {
                 this.selectCell(cell);
-            }
+            },
+            new StaticTableFactory()
         );
     }
 
@@ -113,7 +109,7 @@ class InsertionCommandsAssignmentTable {
 
         let columnIndex = -1;
 
-        for (let i = 0; i < Table.MAX_COLUMNS; i++) {
+        for (let i = 0; i < StaticTable.MAX_COLUMNS; i++) {
             const cell = this.display.getCell(0, i);
             
             if ((cell !== null) && this.currentCell.equals(cell)) {

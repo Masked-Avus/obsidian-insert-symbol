@@ -4,17 +4,15 @@ import {
 } from "obsidian";
 
 import {
-    updateRecentSymbols
-} from "../../settings";
-
-import {
     CssClass,
     overwriteTableRow
 } from "../utils";
 
+import { updateRecentSymbols } from "../../settings";
 import InsertSymbolPlugin from "../../main";
 import SymbolTableDisplay from "../table-display";
 import SymbolTableCollection from "../table-collection";
+import StaticTableFactory from "../factory/static-table-factory";
 
 export default class InsertSymbolModal extends Modal {
     private static readonly TITLE = "Symbol Inserter";
@@ -89,7 +87,8 @@ class RecentSymbolsTable {
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
                 this.plugin.settings.lastSymbol = symbol;
-            }
+            },
+            new StaticTableFactory()
         );
     }
 

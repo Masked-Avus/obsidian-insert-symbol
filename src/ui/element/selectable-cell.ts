@@ -37,4 +37,8 @@ export default class SelectableCell {
     setText(text: string): void {
         this.cellRef?.setText(text);
     }
+
+    getRef(): HTMLTableCellElement | null {
+        return this.cellRef;
+    }
 }

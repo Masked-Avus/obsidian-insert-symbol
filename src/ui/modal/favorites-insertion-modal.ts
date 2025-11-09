@@ -3,19 +3,16 @@ import {
     Modal
 } from "obsidian";
 
-import {
-    updateRecentSymbols
-} from "src/settings";
-
+import { updateRecentSymbols } from "src/settings";
 import InsertSymbolPlugin from "src/main";
-import Table from "src/ui/element/table";
+import StaticTable from "src/ui/element/static-table";
 
 export default class InsertFavoriteSymbolModal extends Modal {
     private static readonly TITLE: string = "Favorite Symbols";
     private container: HTMLElement;
     private plugin: InsertSymbolPlugin;
     private editor: Editor;
-    private table: Table;
+    private table: StaticTable;
 
     constructor(plugin: InsertSymbolPlugin, editor: Editor) {
         super(plugin.app);
@@ -28,7 +25,7 @@ export default class InsertFavoriteSymbolModal extends Modal {
     onOpen(): void {
         this.initializeContainer();
         
-        new Table(
+        new StaticTable(
             this.container,
             this.plugin.settings.favoriteSymbols.symbols,
             async (cell: HTMLTableCellElement, symbol: string) => {

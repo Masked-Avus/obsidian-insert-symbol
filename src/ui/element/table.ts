@@ -1,21 +1,17 @@
 import {
-    Utf16Symbol
-} from "src/symbol/types";
-
-import {
     CssClass,
-    setCell,
     UiEvent
 } from "../utils";
 
+import { Utf16Symbol } from "src/symbol/types";
 import Displayable from "./displayable";
 
-export default class Table implements Displayable {
+export default abstract class Table implements Displayable {
     public static readonly MAX_COLUMNS = 10;
 
     private readonly container: HTMLElement;
-    private readonly onCellClickCallback: (cell: HTMLTableCellElement, symbol: string) => void;
-    private tableRef: HTMLTableElement;
+    private readonly internalOnCellClickCallback: (cell: HTMLTableCellElement, symbol: string) => void;
+    private internalTableRef: HTMLTableElement;
 
     constructor(
         container: HTMLElement,
@@ -24,45 +20,52 @@ export default class Table implements Displayable {
         ) {
 
         this.container = container;
-        this.onCellClickCallback = onClickCallback;
-
+        this.internalOnCellClickCallback = onClickCallback;
         this.build(contents);
     }
 
     getRow(index: number): HTMLTableRowElement {
-        return this.tableRef.rows[index];
+        return this.internalTableRef.rows[index];
     }
 
     getCell(rowIndex: number, columnIndex: number): HTMLTableCellElement | null {
-        return this.tableRef.rows[rowIndex].cells.item(columnIndex);
+        return this.internalTableRef.rows[rowIndex].cells.item(columnIndex);
     }
 
     isHidden(): boolean {
-        return this.tableRef.hidden;
+        return this.internalTableRef.hidden;
     }
 
     display(): void {
-        this.tableRef.hidden = false;
+        this.internalTableRef.hidden = false;
     }
 
     hide(): void {
-        this.tableRef.hidden = true;
+        this.internalTableRef.hidden = true;
+    }
+
+    protected get tableRef(): HTMLTableElement {
+        return this.internalTableRef;
+    }
+
+    protected get onCellClickCallback(): (cell: HTMLTableCellElement, symbol: string) => void {
+        return this.internalOnCellClickCallback;
     }
 
     private build(symbols: Utf16Symbol[]): void {
-        this.tableRef = this.container.createEl("table");
-        this.tableRef.addClass(CssClass.TABLE);
+        this.internalTableRef = this.container.createEl("table");
+        this.internalTableRef.addClass(CssClass.TABLE);
 
         if (symbols.length === 0) {
             return;
         }
         
         let cellPosition = 1;
-        let row = this.tableRef.insertRow();
+        let row = this.internalTableRef.insertRow();
 
         for (let i = 0; i < symbols.length; i++) {
             if (cellPosition > Table.MAX_COLUMNS) {
-                row = this.tableRef.insertRow();
+                row = this.internalTableRef.insertRow();
                 cellPosition = 1;
             }
             
@@ -70,12 +73,12 @@ export default class Table implements Displayable {
             cell.addClass(CssClass.TABLE_CELL);
 
             const symbol = symbols[i];
-            setCell(cell, symbol);
+            cell.setText(symbol);
             
             cell.addEventListener(UiEvent.CLICK, () => {
-                this.onCellClickCallback(cell, symbol);
+                this.internalOnCellClickCallback(cell, symbol);
             });
-            
+
             cellPosition++;
         }
     }

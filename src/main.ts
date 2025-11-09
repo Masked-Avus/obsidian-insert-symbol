@@ -10,10 +10,7 @@ import {
 	DEFAULT_SETTINGS
 } from "./settings";
 
-import {
-    UiEvent
-} from "./ui/utils";
-
+import { UiEvent } from "./ui/utils";
 import SymbolCollection from "./symbol/symbol-collection";
 import InsertSymbolModal from "./ui/modal/insertion-modal";
 import InsertFavoriteSymbolModal from "./ui/modal/favorites-insertion-modal";
