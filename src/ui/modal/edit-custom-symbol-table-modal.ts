@@ -122,9 +122,7 @@ class CustomSymbolTable {
                         return;
                     }
 
-                    console.log(`symbols ${this.currentCell.getText()} and ${cell.getText()} swapped`);
-                    // Swap text of [cell] and [this.currentCell].
-                    //this.tableRef.swapCellSymbols(cellRef, cell);
+                    this.tableRef.swapCellSymbols(cellRef, cell);
                 }
                 else {
                     console.log(`symbol ${cell.getText()} deleted`);
