@@ -169,8 +169,7 @@ class CustomSymbolTable {
     }
 
     add(symbol: string): void {
-        console.log(`symbol ${symbol} added to custom table`);
-        //this.tableRef?.addCell(symbol);
+        this.tableRef?.addCell(symbol);
     }
 
     clear(): void {

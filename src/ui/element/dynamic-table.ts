@@ -33,7 +33,16 @@ export default class DynamicTable extends Table {
         const lastRow = this.tableRef.rows.item(this.tableRef.rows.length - 1);
 
         if ((lastRow === null) || (lastRow.cells.length === DynamicTable.MAX_COLUMNS)) {
-            this.appendNewRow(symbol);
+            //this.appendNewRow(symbol);
+            const row = this.tableRef.insertRow();
+            this.appendNewCell(row, symbol);
+        }
+        else {
+            const row = this.tableRef.rows.item(this.tableRef.rows.length - 1);
+
+            if (row !== null) {
+                this.appendNewCell(row, symbol);
+            }
         }
     }
 
@@ -67,14 +76,13 @@ export default class DynamicTable extends Table {
         }
     }
 
-    private appendNewRow(symbol: string): void {
-        const row = this.tableRef.insertRow();
-        const firstCell = row.insertCell();
-        firstCell.addClass(CssClass.TABLE_CELL);
-        firstCell.setText(symbol);
+    private appendNewCell(row: HTMLTableRowElement, symbol: string): void {
+        const cell = row.insertCell();
+        cell.addClass(CssClass.TABLE_CELL);
+        cell.setText(symbol);
 
-        firstCell.addEventListener(UiEvent.CLICK, () => {
-            this.onCellClickCallback(firstCell, symbol);
+        cell.addEventListener(UiEvent.CLICK, () => {
+            this.onCellClickCallback(cell, symbol);
         });
     }
 
