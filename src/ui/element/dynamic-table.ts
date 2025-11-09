@@ -186,7 +186,7 @@ export default class DynamicTable extends Table {
             return;
         }
 
-        for (let i = 0; i < (currentRow.cells.length - 1); i++) {
+        for (let i = startingIndex; i < (currentRow.cells.length - 1); i++) {
             const currentCell = currentRow.cells.item(i);
             const nextCell = currentRow.cells.item(i + 1);
 

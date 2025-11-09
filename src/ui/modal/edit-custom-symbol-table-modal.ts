@@ -17,6 +17,7 @@ import DynamicTableFactory from "../factory/dynamic-table-factory";
 import TableHeading from "../element/heading";
 import Table from "../element/table";
 import DynamicTable from "../element/dynamic-table";
+import logError from "src/logging";
 
 export default class EditCustomSymbolGroupModal extends Modal {
     private static readonly TITLE: string = "Edit Custom Symbol Table";
@@ -125,9 +126,7 @@ class CustomSymbolTable {
                     this.tableRef.swapCellSymbols(cellRef, cell);
                 }
                 else {
-                    console.log(`symbol ${cell.getText()} deleted`);
-                    // Delete [cell] and adjust table.
-                    //this.tableRef.removeCell(cell);
+                    this.tableRef.removeCell(cell);
                 }
 
                 this.currentCell.unselect();
@@ -140,7 +139,7 @@ class CustomSymbolTable {
                     this.tableRef = table;
                 }
                 else {
-                    console.error("Expected DynamicTable but got another Table-derived type instead");
+                    logError(new Error("Expected DynamicTable but got another Table-derived type instead"));
                 }
             }
         );
