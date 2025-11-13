@@ -3,7 +3,7 @@ import {
     UiEvent
 } from "../utils";
 
-import { Utf16Symbol } from "src/symbol/types";
+import { Utf16Symbol } from "src/symbols/types";
 import Displayable from "./displayable";
 
 export default abstract class Table implements Displayable {

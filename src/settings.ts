@@ -7,14 +7,14 @@ import {
 import {
     getDefaultSymbol,
     Utf16Symbol,
-} from "./symbol/types";
+} from "./symbols/types";
 
 import { Icon } from "./ui/utils";
-import SymbolGroup from "./symbol/internal-symbol-group";
+import SymbolGroup from "./symbols/internal-symbol-group";
 import InsertSymbolPlugin from "./main";
-import AssignInsertionCommandsModal from "./ui/modal/assign-insertion-modal";
-import EditCustomSymbolGroupModal from "./ui/modal/edit-custom-symbol-group-modal";
-import Utf16Range from "./symbol/range";
+import AssignInsertionCommandsModal from "./ui/modals/assign-insertion-modal";
+import EditCustomSymbolGroupModal from "./ui/modals/edit-custom-symbol-group-modal";
+import Utf16Range from "./symbols/range";
 
 export interface InsertSymbolPluginSettings {
     recentSymbols: SymbolGroup;

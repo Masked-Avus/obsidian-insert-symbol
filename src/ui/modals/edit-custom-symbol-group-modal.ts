@@ -12,11 +12,11 @@ import {
 import InsertSymbolPlugin from "src/main";
 import SymbolTableDisplay from "../table-display";
 import SymbolTableCollection from "../table-collection";
-import SelectableCell from "../element/selectable-cell";
-import DynamicTableFactory from "../factory/dynamic-table-factory";
-import TableHeading from "../element/heading";
-import Table from "../element/table";
-import DynamicTable from "../element/dynamic-table";
+import SelectableCell from "../elements/selectable-cell";
+import DynamicTableFactory from "../factories/dynamic-table-factory";
+import TableHeading from "../elements/heading";
+import Table from "../elements/table";
+import DynamicTable from "../elements/dynamic-table";
 import logError from "src/logging";
 
 export default class EditCustomSymbolGroupModal extends Modal {

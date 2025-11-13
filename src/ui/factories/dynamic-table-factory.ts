@@ -1,7 +1,7 @@
-import { Utf16Symbol } from "src/symbol/types";
-import Table from "../element/table";
+import { Utf16Symbol } from "src/symbols/types";
+import Table from "../elements/table";
 import TableFactory from "./types";
-import DynamicTable from "../element/dynamic-table";
+import DynamicTable from "../elements/dynamic-table";
 
 export default class DynamicTableFactory implements TableFactory {
     createTable(container: HTMLElement, contents: Utf16Symbol[], onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void): Table {

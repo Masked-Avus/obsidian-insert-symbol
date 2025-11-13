@@ -10,12 +10,11 @@ import {
 	DEFAULT_SETTINGS
 } from "./settings";
 
-import { UiEvent } from "./ui/utils";
-import SymbolCollection from "./symbol/symbol-collection";
-import InsertSymbolModal from "./ui/modal/insertion-modal";
-import InsertFavoriteSymbolModal from "./ui/modal/favorites-insertion-modal";
-import DEFAULT_SYMBOLS from "./symbol/default-symbols";
-import CustomSymbolGroupModal from "./ui/modal/custom-symbol-group-modal";
+import SymbolCollection from "./symbols/symbol-collection";
+import InsertSymbolModal from "./ui/modals/insertion-modal";
+import InsertFavoriteSymbolModal from "./ui/modals/favorites-insertion-modal";
+import DEFAULT_SYMBOLS from "./symbols/default-symbols";
+import CustomSymbolGroupModal from "./ui/modals/custom-symbol-group-modal";
 
 export default class InsertSymbolPlugin extends Plugin {
     private static readonly FAVORITE_SYMBOL_INSERTION_COMMAND_COUNT: number = 10;

@@ -1,4 +1,4 @@
-import { Utf16Symbol } from "src/symbol/types";
+import { Utf16Symbol } from "src/symbols/types";
 import Table from "./table";
 
 export default class StaticTable extends Table {

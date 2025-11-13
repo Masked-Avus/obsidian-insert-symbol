@@ -5,10 +5,10 @@ import {
 
 import { updateRecentSymbols } from "src/settings";
 import InsertSymbolPlugin from "src/main";
-import StaticTable from "src/ui/element/static-table";
+import StaticTable from "src/ui/elements/static-table";
 
-export default class InsertFavoriteSymbolModal extends Modal {
-    private static readonly TITLE: string = "Favorite Symbols";
+export default class CustomSymbolGroupModal extends Modal {
+    private static readonly TITLE: string = "Custom Symbol Group";
     private container: HTMLElement;
     private plugin: InsertSymbolPlugin;
     private editor: Editor;
@@ -19,7 +19,7 @@ export default class InsertFavoriteSymbolModal extends Modal {
         this.plugin = plugin;
         this.editor = editor;
 
-        this.setTitle(InsertFavoriteSymbolModal.TITLE);
+        this.setTitle(CustomSymbolGroupModal.TITLE);
     }
 
     onOpen(): void {
@@ -27,7 +27,7 @@ export default class InsertFavoriteSymbolModal extends Modal {
         
         new StaticTable(
             this.container,
-            this.plugin.settings.favoriteSymbols.symbols,
+            this.plugin.settings.customSymbolGroup.symbols,
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
                 

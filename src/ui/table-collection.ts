@@ -1,7 +1,7 @@
 import InsertSymbolPlugin from "src/main";
-import SymbolGroup from "src/symbol/internal-symbol-group";
+import SymbolGroup from "src/symbols/internal-symbol-group";
 import SymbolTableDisplay from "./table-display";
-import StaticTableFactory from "./factory/static-table-factory";
+import StaticTableFactory from "./factories/static-table-factory";
 
 export default class SymbolTableCollection {
     private plugin: InsertSymbolPlugin;

@@ -1,5 +1,5 @@
-import { Utf16Symbol } from "src/symbol/types";
-import Table from "../element/table";
+import { Utf16Symbol } from "src/symbols/types";
+import Table from "../elements/table";
 
 export default interface TableFactory {
     createTable(

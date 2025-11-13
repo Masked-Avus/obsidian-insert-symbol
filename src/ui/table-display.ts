@@ -1,8 +1,8 @@
-import Break from "./element/break";
-import Table from "./element/table";
-import TableHeading from "./element/heading";
-import TableFactory from "./factory/types";
-import SymbolGroup from "src/symbol/internal-symbol-group";
+import Break from "./elements/break";
+import Table from "./elements/table";
+import TableHeading from "./elements/heading";
+import TableFactory from "./factories/types";
+import SymbolGroup from "src/symbols/internal-symbol-group";
 
 export default class SymbolTableDisplay {
     private readonly heading: TableHeading;

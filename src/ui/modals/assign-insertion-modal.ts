@@ -3,9 +3,9 @@ import { CssClass } from "../utils";
 import InsertSymbolPlugin from "../../main";
 import SymbolTableDisplay from "../table-display";
 import SymbolTableCollection from "../table-collection";
-import StaticTable from "../element/static-table";
-import SelectableCell from "../element/selectable-cell";
-import StaticTableFactory from "../factory/static-table-factory";
+import StaticTable from "../elements/static-table";
+import SelectableCell from "../elements/selectable-cell";
+import StaticTableFactory from "../factories/static-table-factory";
 
 export default class AssignInsertionCommandsModal extends Modal {
     private static readonly TITLE: string = "Favorite Symbol Assignment";
