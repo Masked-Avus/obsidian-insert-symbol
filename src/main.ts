@@ -15,6 +15,7 @@ import SymbolCollection from "./symbol/symbol-collection";
 import InsertSymbolModal from "./ui/modal/insertion-modal";
 import InsertFavoriteSymbolModal from "./ui/modal/favorites-insertion-modal";
 import DEFAULT_SYMBOLS from "./symbol/default-symbols";
+import CustomSymbolGroupModal from "./ui/modal/custom-symbol-group-modal";
 
 export default class InsertSymbolPlugin extends Plugin {
     private static readonly FAVORITE_SYMBOL_INSERTION_COMMAND_COUNT: number = 10;
@@ -31,6 +32,7 @@ export default class InsertSymbolPlugin extends Plugin {
 
         this.addOpenSymbolInsertionModalCommand();
         this.addOpenFavoriteSymbolsInsertionModalCommand();
+        this.addOpenCustomSymbolGroupModalCommand();
         this.addFavoriteSymbolCommands();
         this.addInsertMostRecentSymbolCommand();
         this.addSettingTab(new InsertSymbolPluginSettingTab(this.app, this));
@@ -94,6 +96,22 @@ export default class InsertSymbolPlugin extends Plugin {
                 }
 
                 new InsertFavoriteSymbolModal(this, editor).open();
+
+                return true;
+            }
+        });
+    }
+
+    addOpenCustomSymbolGroupModalCommand(): void {
+        this.addCommand({
+            id: "open-custom-symbol-group-modal",
+            name: "Open custom symbol group inserter",
+            editorCallback: (editor: Editor, view: MarkdownView) => {
+                if (!view) {
+                    return false;
+                }
+
+                new CustomSymbolGroupModal(this, editor).open();
 
                 return true;
             }
