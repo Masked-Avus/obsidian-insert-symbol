@@ -31,7 +31,7 @@ export default class AssignInsertionCommandsModal extends Modal {
             this.container,
             this.plugin,
             async (cell: HTMLTableCellElement, symbol: string) => {
-                await this.assignmentTable.update(symbol);
+                await this.assignmentTable.updateSettings(symbol);
             }
         );
     }
@@ -77,7 +77,7 @@ class InsertionCommandsAssignmentTable {
         );
     }
 
-    async update(symbol: string): Promise<void> {
+    async updateSettings(symbol: string): Promise<void> {
         const symbols = this.plugin.settings.favoriteSymbols.symbols;
 
         if (this.currentCell.isSelected()) {

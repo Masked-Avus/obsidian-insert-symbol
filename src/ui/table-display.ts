@@ -36,7 +36,7 @@ export default class SymbolTableDisplay {
         return this.table.getCell(rowIndex, columnIndex);
     }
 
-    getRow(rowIndex: number): HTMLTableRowElement {
+    getRow(rowIndex: number): HTMLTableRowElement | null {
         return this.table.getRow(rowIndex);
     }
 }

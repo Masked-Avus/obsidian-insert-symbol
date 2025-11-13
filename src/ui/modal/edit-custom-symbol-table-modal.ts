@@ -60,8 +60,9 @@ export default class EditCustomSymbolGroupModal extends Modal {
         this.builtinTables = new SymbolTableCollection(
             this.container,
             this.plugin,
-            (cell: HTMLTableCellElement, symbol: string) => {
+            async (cell: HTMLTableCellElement, symbol: string) => {
                 this.customTable.add(cell.getText());
+                await this.customTable.updateSettings();
             }
         );
     }
@@ -85,8 +86,9 @@ export default class EditCustomSymbolGroupModal extends Modal {
             .setName("Clear table")
             .addButton(button => button
                 .setIcon(Icon.TRASH)
-                .onClick(() => {
+                .onClick(async () => {
                     this.customTable.clear();
+                    await this.plugin.saveSettings();
                 }
             )
         );
@@ -107,7 +109,7 @@ class CustomSymbolTable {
             this.container,
             this.plugin.settings.customSymbolGroup.symbols,
             this.plugin.settings.customSymbolGroup.name,
-            (cell: HTMLTableCellElement, symbol: string) => {
+            async (cell: HTMLTableCellElement, symbol: string) => {
                 if (this.tableRef === undefined) {
                     return;
                 }
@@ -129,6 +131,7 @@ class CustomSymbolTable {
                     this.tableRef.removeCell(cell);
                 }
 
+                await this.updateSettings();
                 this.currentCell.unselect();
             },
             new DynamicTableFactory(),
@@ -145,16 +148,34 @@ class CustomSymbolTable {
         );
     }
 
-    async update(): Promise<void> {
+    async updateSettings(): Promise<void> {
         if (this.tableRef === undefined) {
             return;
         }
 
-        // TODO
         // 1. Clear [this.plugin.settings.customSymbolGroup.symbols].
+        this.plugin.settings.customSymbolGroup.symbols.length = 0;
+        
         // 2. Iterate through [this.tableRef]'s rows.
-        // 3. Iterate through each row, pushing its texst value to [this.plugin.settings.customSymbolGroup.symbols].
+        let rowIndex = 0;
+        let currentRow = this.tableRef.getRow(rowIndex);
+        
+        while (currentRow !== null) {
+            // 3. Iterate through each cell, pushing its text value to [this.plugin.settings.customSymbolGroup.symbols].
+            for (let cellIndex = 0; cellIndex < currentRow.cells.length; cellIndex++) {
+                const cell = currentRow.cells.item(cellIndex);
+
+                if (cell !== null) {
+                    this.plugin.settings.customSymbolGroup.symbols.push(cell.getText());
+                }
+            }
+            
+            rowIndex++;
+            currentRow = this.tableRef.getRow(rowIndex);
+        }
+         
         // 4. Save settings.
+        await this.plugin.saveSettings();
     }
 
     selectCell(cell: HTMLTableCellElement): void {
@@ -171,5 +192,6 @@ class CustomSymbolTable {
 
     clear(): void {
         this.tableRef?.clearCells();
+        this.plugin.settings.customSymbolGroup.symbols.length = 0;
     }
 }

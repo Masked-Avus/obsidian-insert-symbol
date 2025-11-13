@@ -24,8 +24,8 @@ export default abstract class Table implements Displayable {
         this.build(contents);
     }
 
-    getRow(index: number): HTMLTableRowElement {
-        return this.internalTableRef.rows[index];
+    getRow(index: number): HTMLTableRowElement | null {
+        return this.internalTableRef.rows.item(index);
     }
 
     getCell(rowIndex: number, columnIndex: number): HTMLTableCellElement | null {
