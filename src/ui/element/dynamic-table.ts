@@ -162,7 +162,7 @@ export default class DynamicTable extends Table {
     }
 
     private getCellIndex(cell: HTMLTableCellElement, row: HTMLTableRowElement): number {
-        for (let column = 0; row.cells.length; column++) {
+        for (let column = 0; column < row.cells.length; column++) {
             const currentCell = row.cells.item(column);
 
             if (currentCell === null) {
@@ -174,6 +174,28 @@ export default class DynamicTable extends Table {
         }
 
         return -1;
+    }
+
+    private shiftAllSymbolsForward(startingPosition: CellPosition): void {
+        let currentRow = this.tableRef.rows.item(startingPosition.row);
+
+        if (currentRow === null) {
+            return;
+        }
+
+        let nextRow = this.tableRef.rows.item(startingPosition.row + 1);
+        this.shiftSymbolsForwardInRow(currentRow, nextRow, startingPosition.column);
+
+        for (let i = startingPosition.row + 1; i < this.tableRef.rows.length; i++) {
+            currentRow = this.tableRef.rows.item(i);
+            nextRow = this.tableRef.rows.item(i + 1);
+
+            if (currentRow === null) {
+                continue;
+            }
+
+            this.shiftSymbolsForwardInRow(currentRow, nextRow, 0);
+        }
     }
 
     private shiftSymbolsForwardInRow(
@@ -206,28 +228,6 @@ export default class DynamicTable extends Table {
             }
 
             lastCellOfCurrentRow.setText(firstCellOfNextRow.getText());
-        }
-    }
-
-    private shiftAllSymbolsForward(startingPosition: CellPosition): void {
-        let currentRow = this.tableRef.rows.item(startingPosition.row);
-
-        if (currentRow === null) {
-            return;
-        }
-
-        let nextRow = this.tableRef.rows.item(startingPosition.row + 1);
-        this.shiftSymbolsForwardInRow(currentRow, nextRow, startingPosition.column);
-
-        for (let i = startingPosition.row + 1; i < this.tableRef.rows.length; i++) {
-            currentRow = this.tableRef.rows.item(i);
-            nextRow = this.tableRef.rows.item(i + 1);
-
-            if (currentRow === null) {
-                continue;
-            }
-
-            this.shiftSymbolsForwardInRow(currentRow, nextRow, 0);
         }
     }
 

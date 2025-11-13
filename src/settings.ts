@@ -14,7 +14,7 @@ import { Icon } from "./ui/utils";
 import InsertSymbolPlugin from "./main";
 import StaticTable from "./ui/element/static-table";
 import AssignInsertionCommandsModal from "./ui/modal/assign-insertion-modal";
-import EditCustomSymbolGroupModal from "./ui/modal/edit-custom-symbol-table-modal";
+import EditCustomSymbolGroupModal from "./ui/modal/edit-custom-symbol-group-modal";
 
 export interface InsertSymbolPluginSettings {
     recentSymbols: CustomSymbolGroupData;
