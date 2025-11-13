@@ -42,6 +42,31 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
         "Combining Diacritical Marks",
         new Utf16Range(0x300, 0x36f),
         "Diacritic marks that visually combine with existing characters."
+    ),
+    new SymbolGroup(
+        "Greek and Coptic",
+        new Utf16Range(0x374, 0x3ff),
+        "Basic set of characters found in Greek and Coptic."
+    ),
+    new SymbolGroup(
+        "Cyrillic",
+        new Utf16Range(0x400, 0x4ff),
+        "Basic set of Cyrillic characters."
+    ),
+    new SymbolGroup(
+        "Cyrillic Supplement",
+        new Utf16Range(0x500, 0x52f),
+        "Supplementary Cyrillic characters."
+    ),
+    new SymbolGroup(
+        "Armenian",
+        new Utf16Range(0x531, 0x58f),
+        "Basic set of Armenian characters."
+    ),
+    new SymbolGroup(
+        "Hebrew",
+        new Utf16Range(0x591, 0x5f4),
+        "Basic set of Hebrew characters."
     )
 ];
 
