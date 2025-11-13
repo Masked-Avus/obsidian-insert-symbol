@@ -25,7 +25,7 @@ export default class Utf16Range {
     }
 
     getCount(): number {
-        return (this.end - this.start) + 1;
+        return (this.end > this.start) ? (this.end - this.start) + 1 : 0;
     }
 
     getSymbol(index: number): Utf16Code {
@@ -42,13 +42,9 @@ export default class Utf16Range {
         const array: Utf16Symbol[] = new Array(this.getCount());
 
         for (let i = 0; i < this.getCount(); i++) {
-            array[i] = toString(this.getSymbol(i));
+            array[i] = String.fromCharCode(this.getSymbol(i));
         }
 
         return array;
     }
-}
-
-function toString(symbol: Utf16Code) {
-    return String.fromCharCode(symbol);
 }

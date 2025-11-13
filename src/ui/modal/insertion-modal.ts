@@ -68,8 +68,6 @@ export default class InsertSymbolModal extends Modal {
 }
 
 class RecentSymbolsTable {
-    private static readonly TITLE = "Recent";
-
     private plugin: InsertSymbolPlugin;
     private container: HTMLElement;
     private editor: Editor;
@@ -82,8 +80,7 @@ class RecentSymbolsTable {
 
         this.display = new SymbolTableDisplay(
             this.container,
-            this.plugin.settings.recentSymbols.symbols,
-            RecentSymbolsTable.TITLE,
+            this.plugin.settings.recentSymbols,
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
                 this.plugin.settings.lastSymbol = symbol;
@@ -107,7 +104,12 @@ class RecentSymbolsTable {
 
         if (!found) {
             updateRecentSymbols(this.plugin.settings, symbol);
-            overwriteTableRow(this.display.getRow(0), recentSymbols);
+
+            const firstRow = this.display.getRow(0);
+
+            if (firstRow !== null) {
+                overwriteTableRow(firstRow, recentSymbols);
+            }
         }
     }
 }

@@ -52,8 +52,6 @@ export default class AssignInsertionCommandsModal extends Modal {
 }
 
 class InsertionCommandsAssignmentTable {
-    private static readonly TITLE: string = "Assign Symbols to Commands";
-
     private container: HTMLElement;
     private plugin: InsertSymbolPlugin;
     private currentCell: SelectableCell = new SelectableCell();
@@ -68,8 +66,7 @@ class InsertionCommandsAssignmentTable {
         this.plugin = plugin;
         this.display = new SymbolTableDisplay(
             this.container,
-            this.plugin.settings.favoriteSymbols.symbols,
-            InsertionCommandsAssignmentTable.TITLE,
+            this.plugin.settings.favoriteSymbols,
             (cell: HTMLTableCellElement) => {
                 this.selectCell(cell);
             },

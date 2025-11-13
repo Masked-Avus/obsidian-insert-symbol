@@ -1,5 +1,5 @@
 import InsertSymbolPlugin from "src/main";
-import InternalSymbolGroup from "src/symbol/internal-symbol-group";
+import SymbolGroup from "src/symbol/internal-symbol-group";
 import SymbolTableDisplay from "./table-display";
 import StaticTableFactory from "./factory/static-table-factory";
 
@@ -27,20 +27,18 @@ export default class SymbolTableCollection {
         for (let i = 0; i < symbolGroups.length; i++) {
             const group = this.plugin.symbolGroups.getSymbols(symbolGroups[i]);
 
-            if ((group !== undefined) && (group.getCount() > 0)) {
+            if ((group !== undefined) && (group.symbols.length > 0)) {
                 this.addSymbolTable(group);
             }
         }
     }
 
-    private addSymbolTable(symbolGroup: InternalSymbolGroup): void {
+    private addSymbolTable(symbolGroup: SymbolGroup): void {
         new SymbolTableDisplay(
             this.container,
-            symbolGroup.getSymbols(),
-            symbolGroup.getName(),
+            symbolGroup,
             this.onClickCallback,
-            this.tableFactory,
-            symbolGroup.getDescription()
+            this.tableFactory
         );
     }
 }

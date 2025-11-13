@@ -9,35 +9,34 @@ import {
     Utf16Symbol,
 } from "./symbol/types";
 
-import { CustomSymbolGroupData } from "./symbol/custom-symbol-group";
 import { Icon } from "./ui/utils";
+import SymbolGroup from "./symbol/internal-symbol-group";
 import InsertSymbolPlugin from "./main";
-import StaticTable from "./ui/element/static-table";
 import AssignInsertionCommandsModal from "./ui/modal/assign-insertion-modal";
 import EditCustomSymbolGroupModal from "./ui/modal/edit-custom-symbol-group-modal";
+import Utf16Range from "./symbol/range";
 
 export interface InsertSymbolPluginSettings {
-    recentSymbols: CustomSymbolGroupData;
-    favoriteSymbols: CustomSymbolGroupData;
-    customSymbolGroup: CustomSymbolGroupData;
+    recentSymbols: SymbolGroup;
+    favoriteSymbols: SymbolGroup;
+    customSymbolGroup: SymbolGroup;
     lastSymbol: Utf16Symbol;
 }
 
 export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
-    // Both of these MUST be at 10 elements, exactly.
-    recentSymbols: new CustomSymbolGroupData(
-        "Recent Symbols",
-        getEmptySymbolArray(),
+    recentSymbols: new SymbolGroup(
+        "Recent",
+        getDefaultSymbolGroup(),
         "Symbols most recently selected from the insertion modal."
     ),
-    favoriteSymbols: new CustomSymbolGroupData(
-        "Favorite Symbols",
-        getEmptySymbolArray(),
+    favoriteSymbols: new SymbolGroup(
+        "Favorite",
+        getDefaultSymbolGroup(),
         "Symbols currently assigned to the insertion commands."
     ),
-    customSymbolGroup: new CustomSymbolGroupData(
+    customSymbolGroup: new SymbolGroup(
         "Custom",
-        [],
+        getDefaultSymbolGroup(),
         "User-defined group of symbols."
     ),
     lastSymbol: getDefaultSymbol()
@@ -45,7 +44,6 @@ export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
 
 export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {
     settings.recentSymbols.symbols.unshift(symbol);
-    // So size of [recentSymbols] remains at [Table.MAX_COLUMNS] length.
     settings.recentSymbols.symbols.pop();
 }
 
@@ -98,12 +96,6 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
     }
 }
 
-function getEmptySymbolArray(): string[] {
-    const array: string[] = new Array(StaticTable.MAX_COLUMNS);
-
-    for (let i = 0; i < StaticTable.MAX_COLUMNS; i++) {
-        array[i] = i.toString();
-    }
-
-    return array;
+function getDefaultSymbolGroup(): Utf16Range {
+    return new Utf16Range(0x30, 0x39);
 }

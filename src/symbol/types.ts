@@ -1,12 +1,6 @@
 export type Utf16Code = number;
 export type Utf16Symbol = string;
 
-export interface SymbolGroup {
-    getName(): string;
-    getDescription(): string | undefined;
-    getSymbols(): Utf16Symbol[];
-}
-
 /*
 export function toHexNumber(value: string) {
     const hexValue = Buffer.from(value).toString("hex");

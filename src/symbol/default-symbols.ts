@@ -5,40 +5,40 @@ one's internet.
 */
 
 import Utf16Range from "./range";
-import InternalSymbolGroup from "./internal-symbol-group";
+import SymbolGroup from "./internal-symbol-group";
 
-const DEFAULT_SYMBOLS: InternalSymbolGroup[] = [
-    new InternalSymbolGroup(
+const DEFAULT_SYMBOLS: SymbolGroup[] = [
+    new SymbolGroup(
         "Basic Latin",
         new Utf16Range(0x20, 0x7e),
         "Basic set of characters consisting of Latin characters and most other characters found on a regular English keyboard."
     ),
-    new InternalSymbolGroup(
+    new SymbolGroup(
         "Latin-1 Supplement",
         new Utf16Range(0xa0, 0xff),
         "Supplementary Latin characters, including both accented letters and additional special symbols."
     ),
-    new InternalSymbolGroup(
+    new SymbolGroup(
         "Latin Extended-A",
         new Utf16Range(0x100, 0x17f),
         "Supplementary Latin characters, including both accented letters and additional special symbols."
     ),
-    new InternalSymbolGroup(
+    new SymbolGroup(
         "Latin Extended-B",
         new Utf16Range(0x180, 0x24f),
         "Supplementary Latin characters, including both accented letters and additional special symbols."
     ),
-    new InternalSymbolGroup(
+    new SymbolGroup(
         "IPA Extensions",
         new Utf16Range(0x250, 0x2af),
         "Additional characters added by the International Phonetic Alphabet (IPA)."
     ),
-    new InternalSymbolGroup(
+    new SymbolGroup(
         "Spacing Modifier Letters",
         new Utf16Range(0x2b0, 0x2ff),
         "Non-combining characters used for modifying the meaning of other characters."
     ),
-    new InternalSymbolGroup(
+    new SymbolGroup(
         "Combining Diacritical Marks",
         new Utf16Range(0x300, 0x36f),
         "Diacritic marks that visually combine with existing characters."

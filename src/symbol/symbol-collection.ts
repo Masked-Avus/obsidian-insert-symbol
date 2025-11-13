@@ -1,22 +1,22 @@
-import InternalSymbolGroup from "./internal-symbol-group";
+import SymbolGroup from "./internal-symbol-group";
 
 // Holds all internally-defined symbol groups.
 export default class SymbolCollection {
-    private readonly symbols: InternalSymbolGroup[] = [];
+    private readonly symbols: SymbolGroup[] = [];
 
     get symbolGroups(): string[] {
         const tableNames: string[] = [];
 
-        this.symbols.forEach((symbolGroup: InternalSymbolGroup) => {
-            tableNames.push(symbolGroup.getName());
+        this.symbols.forEach((symbolGroup: SymbolGroup) => {
+            tableNames.push(symbolGroup.name);
         });
 
         return tableNames;
     }
 
-    getSymbols(name: string): InternalSymbolGroup | undefined {
+    getSymbols(name: string): SymbolGroup | undefined {
         for (const symbolGroup of this.symbols) {
-            if (symbolGroup.getName() === name) {
+            if (symbolGroup.name === name) {
                 return symbolGroup;
             }
         }
@@ -24,7 +24,7 @@ export default class SymbolCollection {
         return undefined;
     }
 
-    addSymbols(symbols: InternalSymbolGroup): boolean {
+    addSymbols(symbols: SymbolGroup): boolean {
         if (this.contains(symbols)) {
             return false;
         }
@@ -36,7 +36,7 @@ export default class SymbolCollection {
 
     removeSymbols(name: string): boolean {
         for (let i = 0; i < this.symbols.length; i++) {
-            if (this.symbols[i].getName() === name) {
+            if (this.symbols[i].name === name) {
                 removeAt(this.symbols, i);
                 return true;
             }
@@ -45,13 +45,13 @@ export default class SymbolCollection {
         return false;
     }
 
-    forEach(callback: (symbolGroup: InternalSymbolGroup) => void): void {
+    forEach(callback: (symbolGroup: SymbolGroup) => void): void {
         this.symbols.forEach(callback);
     }
 
-    contains(symbols: InternalSymbolGroup): boolean {
+    contains(symbols: SymbolGroup): boolean {
         for (const symbolGroup of this.symbols) {
-            if (symbolGroup.getName() === symbols.getName()) {
+            if (symbolGroup.name == symbols.name) {
                 return true;
             }
         }
@@ -60,7 +60,7 @@ export default class SymbolCollection {
     }
 }
 
-function removeAt(symbols: InternalSymbolGroup[], index: number): void {
+function removeAt(symbols: SymbolGroup[], index: number): void {
     if ((index < 0) || (index >= symbols.length)) {
         return;
     }

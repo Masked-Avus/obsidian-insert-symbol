@@ -107,8 +107,7 @@ class CustomSymbolTable {
         this.plugin = plugin;
         this.display = new SymbolTableDisplay(
             this.container,
-            this.plugin.settings.customSymbolGroup.symbols,
-            this.plugin.settings.customSymbolGroup.name,
+            this.plugin.settings.customSymbolGroup,
             async (cell: HTMLTableCellElement, symbol: string) => {
                 if (this.tableRef === undefined) {
                     return;
@@ -135,7 +134,6 @@ class CustomSymbolTable {
                 this.currentCell.unselect();
             },
             new DynamicTableFactory(),
-            this.plugin.settings.customSymbolGroup.description,
             // This is a bit of a hack so I can get access to the DynamicTable's specialized functionality.
             (heading: TableHeading, table: Table) => {
                 if (table instanceof DynamicTable) {
@@ -153,15 +151,12 @@ class CustomSymbolTable {
             return;
         }
 
-        // 1. Clear [this.plugin.settings.customSymbolGroup.symbols].
         this.plugin.settings.customSymbolGroup.symbols.length = 0;
         
-        // 2. Iterate through [this.tableRef]'s rows.
         let rowIndex = 0;
         let currentRow = this.tableRef.getRow(rowIndex);
         
         while (currentRow !== null) {
-            // 3. Iterate through each cell, pushing its text value to [this.plugin.settings.customSymbolGroup.symbols].
             for (let cellIndex = 0; cellIndex < currentRow.cells.length; cellIndex++) {
                 const cell = currentRow.cells.item(cellIndex);
 
@@ -174,7 +169,6 @@ class CustomSymbolTable {
             currentRow = this.tableRef.getRow(rowIndex);
         }
          
-        // 4. Save settings.
         await this.plugin.saveSettings();
     }
 
