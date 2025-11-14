@@ -53,17 +53,13 @@ export default class InsertSymbolModal extends Modal {
     }
 
     onClose(): void {
-        this.cleanUpContainer();
+        this.contentEl.empty();
     }
 
     private initializeContainer(): void {
         this.container = this.contentEl;
         this.container.empty();
         this.container.addClass(CssClass.MODAL);
-    }
-
-    private cleanUpContainer(): void {
-        this.contentEl.empty();
     }
 }
 

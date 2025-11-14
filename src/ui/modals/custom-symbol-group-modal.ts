@@ -40,15 +40,11 @@ export default class CustomSymbolGroupModal extends Modal {
     }
 
     onClose(): void {
-        this.cleanUpContainer();
+        this.contentEl.empty();
     }
 
     private initializeContainer(): void {
         this.container = this.contentEl;
         this.container.empty();
-    }
-
-    private cleanUpContainer(): void {
-        this.contentEl.empty();
     }
 }
