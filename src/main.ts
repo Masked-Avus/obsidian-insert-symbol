@@ -10,6 +10,11 @@ import {
 	DEFAULT_SETTINGS
 } from "./settings";
 
+import {
+    getDefaultSymbol,
+    Utf16Symbol
+} from "./symbols/types";
+
 import SymbolCollection from "./symbols/symbol-collection";
 import InsertSymbolModal from "./ui/modals/insertion-modal";
 import InsertFavoriteSymbolModal from "./ui/modals/favorites-insertion-modal";
@@ -21,6 +26,7 @@ export default class InsertSymbolPlugin extends Plugin {
 
     readonly symbolGroups = new SymbolCollection();
     settings: InsertSymbolPluginSettings;
+    lastSymbol: Utf16Symbol = getDefaultSymbol();
 
     async onload(): Promise<void> {
         await this.loadSettings();
@@ -121,7 +127,7 @@ export default class InsertSymbolPlugin extends Plugin {
 
                     const symbol = this.settings.favoriteSymbols.symbols[i];
                     editor.replaceSelection(symbol);
-                    this.settings.lastSymbol = symbol;
+                    this.lastSymbol = symbol;
                     
                     return true;
                 }
@@ -138,7 +144,7 @@ export default class InsertSymbolPlugin extends Plugin {
                     return false;
                 }
 
-                editor.replaceSelection(this.settings.lastSymbol);
+                editor.replaceSelection(this.lastSymbol);
 
                 return true;
             }

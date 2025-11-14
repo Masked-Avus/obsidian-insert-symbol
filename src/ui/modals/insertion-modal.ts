@@ -47,7 +47,7 @@ export default class InsertSymbolModal extends Modal {
                 this.editor.replaceSelection(cell.getText());
                 this.recentSymbols.update(symbol);
                 await this.plugin.saveSettings();
-                this.plugin.settings.lastSymbol = symbol;
+                this.plugin.lastSymbol = symbol;
             }
         );
     }
@@ -83,7 +83,7 @@ class RecentSymbolsTable {
             this.plugin.settings.recentSymbols,
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
-                this.plugin.settings.lastSymbol = symbol;
+                this.plugin.lastSymbol = symbol;
             },
             new StaticTableFactory()
         );

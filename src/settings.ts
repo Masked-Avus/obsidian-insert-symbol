@@ -4,11 +4,6 @@ import {
     Setting
 } from "obsidian";
 
-import {
-    getDefaultSymbol,
-    Utf16Symbol,
-} from "./symbols/types";
-
 import { Icon } from "./ui/utils";
 import SymbolGroup from "./symbols/internal-symbol-group";
 import InsertSymbolPlugin from "./main";
@@ -20,7 +15,6 @@ export interface InsertSymbolPluginSettings {
     recentSymbols: SymbolGroup;
     favoriteSymbols: SymbolGroup;
     customSymbolGroup: SymbolGroup;
-    lastSymbol: Utf16Symbol;
 }
 
 export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
@@ -38,8 +32,7 @@ export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
         "Custom",
         getDefaultSymbolGroup(),
         "User-defined group of symbols."
-    ),
-    lastSymbol: getDefaultSymbol()
+    )
 }
 
 export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {

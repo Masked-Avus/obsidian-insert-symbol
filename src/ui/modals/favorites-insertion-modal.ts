@@ -34,7 +34,7 @@ export default class InsertFavoriteSymbolModal extends Modal {
                 updateRecentSymbols(this.plugin.settings, symbol);
 
                 await this.plugin.saveSettings();
-                this.plugin.settings.lastSymbol = symbol;
+                this.plugin.lastSymbol = symbol;
             }
         );
     }
