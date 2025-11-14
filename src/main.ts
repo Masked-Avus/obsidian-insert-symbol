@@ -41,11 +41,6 @@ export default class InsertSymbolPlugin extends Plugin {
         this.addSettingTab(new InsertSymbolPluginSettingTab(this.app, this));
     }
     
-    // TODO: Delete this if I never end up using it.
-    onunload(): void {
-        // ...
-    }
-
     async loadSettings(): Promise<void> {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
         cleanSettings(this.settings);
