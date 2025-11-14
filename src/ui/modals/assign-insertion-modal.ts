@@ -106,7 +106,7 @@ class InsertionCommandsAssignmentTable {
 
         let columnIndex = -1;
 
-        for (let i = 0; i < StaticTable.MAX_COLUMNS; i++) {
+        for (let i = 0; i < StaticTable.MAXIMUM_COLUMNS; i++) {
             const cell = this.display.getCell(0, i);
             
             if ((cell !== null) && this.currentCell.equals(cell)) {

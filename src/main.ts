@@ -11,11 +11,7 @@ import {
     cleanSettings
 } from "./settings";
 
-import {
-    Utf16Symbol,
-    BLANK_SYMBOL
-} from "./symbols/types";
-
+import { Utf16Symbol } from "./symbols/types";
 import SymbolCollection from "./symbols/symbol-collection";
 import InsertSymbolModal from "./ui/modals/insertion-modal";
 import InsertFavoriteSymbolModal from "./ui/modals/favorites-insertion-modal";

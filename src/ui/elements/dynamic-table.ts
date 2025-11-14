@@ -4,6 +4,7 @@ import {
 } from "../utils";
 
 import { Utf16Symbol } from "src/symbols/types";
+import { Notice } from "obsidian";
 import Table from "./table";
 
 type CellPosition = {
@@ -12,8 +13,7 @@ type CellPosition = {
 };
 
 export default class DynamicTable extends Table {
-    // Just in case I need them (delete them if I don't).
-    public static readonly MAX_CELLS = 200;
+    public static readonly MAXIMUM_CELLS = 200;
     private cellCount: number;
 
     constructor(
@@ -23,17 +23,22 @@ export default class DynamicTable extends Table {
         ) {
         
         super(container, contents, onClickCallback);
+
+        this.cellCount = contents.length;
     }
 
     addCell(symbol: string): void {
         if (this.containsSymbol(symbol)) {
             return;
         }
-
+        else if (this.cellCount === DynamicTable.MAXIMUM_CELLS) {
+            new Notice(`Limit of ${DynamicTable.MAXIMUM_CELLS} symbols has been reached`);
+            return;
+        }
+        
         const lastRow = this.tableRef.rows.item(this.tableRef.rows.length - 1);
 
-        if ((lastRow === null) || (lastRow.cells.length === DynamicTable.MAX_COLUMNS)) {
-            //this.appendNewRow(symbol);
+        if ((lastRow === null) || (lastRow.cells.length === DynamicTable.MAXIMUM_COLUMNS)) {
             const row = this.tableRef.insertRow();
             this.appendNewCell(row, symbol);
         }
@@ -74,6 +79,8 @@ export default class DynamicTable extends Table {
             const row = rows.item(i);
             row?.remove();
         }
+
+        this.cellCount = 0;
     }
 
     private appendNewCell(row: HTMLTableRowElement, symbol: string): void {
@@ -84,6 +91,8 @@ export default class DynamicTable extends Table {
         cell.addEventListener(UiEvent.CLICK, () => {
             this.onCellClickCallback(cell, symbol);
         });
+
+        this.cellCount++;
     }
 
     private containsCell(cell: HTMLTableCellElement): boolean {
@@ -249,7 +258,8 @@ export default class DynamicTable extends Table {
         }
 
         lastCell.remove();
-
+        this.cellCount--;
+        
         if (lastRow.cells.length === 0) {
             lastRow.remove();
         }

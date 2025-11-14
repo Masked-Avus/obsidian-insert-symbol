@@ -7,7 +7,7 @@ import { Utf16Symbol } from "src/symbols/types";
 import Displayable from "./displayable";
 
 export default abstract class Table implements Displayable {
-    public static readonly MAX_COLUMNS = 10;
+    public static readonly MAXIMUM_COLUMNS = 10;
 
     private readonly container: HTMLElement;
     private readonly internalOnCellClickCallback: (cell: HTMLTableCellElement, symbol: string) => void;
@@ -64,7 +64,7 @@ export default abstract class Table implements Displayable {
         let row = this.internalTableRef.insertRow();
 
         for (let i = 0; i < symbols.length; i++) {
-            if (cellPosition > Table.MAX_COLUMNS) {
+            if (cellPosition > Table.MAXIMUM_COLUMNS) {
                 row = this.internalTableRef.insertRow();
                 cellPosition = 1;
             }

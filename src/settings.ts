@@ -98,20 +98,20 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
 }
 
 export function cleanSettings(settings: InsertSymbolPluginSettings) {
-    if (settings.recentSymbols.symbols.length > Table.MAX_COLUMNS) {
-        settings.recentSymbols.symbols.length = Table.MAX_COLUMNS;
+    if (settings.recentSymbols.symbols.length > Table.MAXIMUM_COLUMNS) {
+        settings.recentSymbols.symbols.length = Table.MAXIMUM_COLUMNS;
     }
 
     replaceExtraLongElements(settings.recentSymbols.symbols);
 
-    if (settings.favoriteSymbols.symbols.length > Table.MAX_COLUMNS) {
-        settings.favoriteSymbols.symbols.length = Table.MAX_COLUMNS;
+    if (settings.favoriteSymbols.symbols.length > Table.MAXIMUM_COLUMNS) {
+        settings.favoriteSymbols.symbols.length = Table.MAXIMUM_COLUMNS;
     }
 
     replaceExtraLongElements(settings.favoriteSymbols.symbols);
 
-    if (settings.customSymbolGroup.symbols.length > DynamicTable.MAX_CELLS) {
-        settings.customSymbolGroup.symbols.length = DynamicTable.MAX_CELLS;
+    if (settings.customSymbolGroup.symbols.length > DynamicTable.MAXIMUM_CELLS) {
+        settings.customSymbolGroup.symbols.length = DynamicTable.MAXIMUM_CELLS;
     }
 
     replaceExtraLongElements(settings.customSymbolGroup.symbols);
