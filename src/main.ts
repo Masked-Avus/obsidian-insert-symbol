@@ -1,6 +1,7 @@
 import {
     Editor,
     MarkdownView,
+    Notice,
     Plugin
 } from "obsidian";
 
@@ -54,15 +55,20 @@ export default class InsertSymbolPlugin extends Plugin {
         await this.saveData(this.settings);
     }
 
-    // TODO: Have some kind of try-catch for dealing with bad data.
     private loadSymbols(): boolean {
+        try {
+            for (const symbolGroup of DEFAULT_SYMBOLS) {
+                this.symbolGroups.addSymbols(symbolGroup);
+            }
 
-        for (const symbolGroup of DEFAULT_SYMBOLS) {
-            this.symbolGroups.addSymbols(symbolGroup);
+            return true;
         }
-
-        // TEMP
-        return true;
+        catch (error) {
+            new Notice("Error encountered when loading symbols");
+            new Notice("Symbols will not be loaded");
+            console.error(error.message);
+            return false;
+        }
     }
 
     private addOpenSymbolInsertionModalCommand(): void {
