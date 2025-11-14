@@ -7,12 +7,13 @@ import {
 import {
 	InsertSymbolPluginSettings,
 	InsertSymbolPluginSettingTab,
-	DEFAULT_SETTINGS
+	DEFAULT_SETTINGS,
+    cleanSettings
 } from "./settings";
 
 import {
-    getDefaultSymbol,
-    Utf16Symbol
+    Utf16Symbol,
+    BLANK_SYMBOL
 } from "./symbols/types";
 
 import SymbolCollection from "./symbols/symbol-collection";
@@ -26,7 +27,7 @@ export default class InsertSymbolPlugin extends Plugin {
 
     readonly symbolGroups = new SymbolCollection();
     settings: InsertSymbolPluginSettings;
-    lastSymbol: Utf16Symbol = getDefaultSymbol();
+    lastSymbol: Utf16Symbol = "";
 
     async onload(): Promise<void> {
         await this.loadSettings();
@@ -50,6 +51,7 @@ export default class InsertSymbolPlugin extends Plugin {
 
     async loadSettings(): Promise<void> {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+        cleanSettings(this.settings);
     }
 
     async saveSettings(): Promise<void> {

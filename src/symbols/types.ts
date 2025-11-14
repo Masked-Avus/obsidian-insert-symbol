@@ -14,6 +14,8 @@ export function areEqual(left: Utf16Code, right: Utf16Code) {
 }
 */
 
-export function getDefaultSymbol(): Utf16Symbol {
-    return "";
+export const BLANK_SYMBOL = " ";
+
+export function isValidLength(symbol: Utf16Symbol): boolean {
+    return symbol.length === 1;
 }

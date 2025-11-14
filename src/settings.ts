@@ -4,12 +4,20 @@ import {
     Setting
 } from "obsidian";
 
+import {
+   BLANK_SYMBOL,
+   isValidLength,
+   Utf16Symbol
+} from "./symbols/types";
+
 import { Icon } from "./ui/utils";
 import SymbolGroup from "./symbols/internal-symbol-group";
 import InsertSymbolPlugin from "./main";
 import AssignInsertionCommandsModal from "./ui/modals/assign-insertion-modal";
 import EditCustomSymbolGroupModal from "./ui/modals/edit-custom-symbol-group-modal";
 import Utf16Range from "./symbols/range";
+import Table from "./ui/elements/table";
+import DynamicTable from "./ui/elements/dynamic-table";
 
 export interface InsertSymbolPluginSettings {
     recentSymbols: SymbolGroup;
@@ -89,6 +97,36 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
     }
 }
 
+export function cleanSettings(settings: InsertSymbolPluginSettings) {
+    if (settings.recentSymbols.symbols.length > Table.MAX_COLUMNS) {
+        settings.recentSymbols.symbols.length = Table.MAX_COLUMNS;
+    }
+
+    replaceExtraLongElements(settings.recentSymbols.symbols);
+
+    if (settings.favoriteSymbols.symbols.length > Table.MAX_COLUMNS) {
+        settings.favoriteSymbols.symbols.length = Table.MAX_COLUMNS;
+    }
+
+    replaceExtraLongElements(settings.favoriteSymbols.symbols);
+
+    if (settings.customSymbolGroup.symbols.length > DynamicTable.MAX_CELLS) {
+        settings.customSymbolGroup.symbols.length = DynamicTable.MAX_CELLS;
+    }
+
+    replaceExtraLongElements(settings.customSymbolGroup.symbols);
+    
+    // TODO: Save validated data in plugin class's `loadSettings()` method, after calling this function.
+}
+
 function getDefaultSymbolGroup(): Utf16Range {
     return new Utf16Range(0x30, 0x39);
+}
+
+function replaceExtraLongElements(list: Utf16Symbol[]) {
+    for (let i = 0; i < list.length; i++) {
+        if (!isValidLength(list[i])) {
+            list[i] = BLANK_SYMBOL;
+        }
+    }
 }
