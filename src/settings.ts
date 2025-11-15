@@ -115,8 +115,6 @@ export function cleanSettings(settings: InsertSymbolPluginSettings) {
     }
 
     replaceExtraLongElements(settings.customSymbolGroup.symbols);
-    
-    // TODO: Save validated data in plugin class's `loadSettings()` method, after calling this function.
 }
 
 function getDefaultSymbolGroup(): Utf16Range {
