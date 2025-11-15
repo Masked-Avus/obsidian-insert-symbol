@@ -1,94 +1,41 @@
-# Obsidian Sample Plugin
+# Insert Symbol
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+## Overview
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+Insert Symbol is a plugin for Obsidian (https://obsidian.md) that provides a suite of functionality for inserting Unicode characters into notes.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+Insert Symbol was inspired by the "Insert Symbol" functionality found in Microsoft Word. While Unicode symbols can be used within Obsidian, there is no native way to use additional characters without copying and pasting them from another document. This was especially inconvenient for my own projects, which occasionally require characters beyond those of a standard English keyboard.
 
-## First time developing plugins?
+## Features
+### Basic Insertion
 
-Quick starting guide for new plugin devs:
+To access all built-in symbol groups, use the `Open symbol inserter` command. This will bring up a modal where you can click on any cell within the tables, and the symbol featured on it will be inserted into the current active Markdown file.
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+### Favorite Symbols
 
-## Releasing new releases
+By going into the plugin's settings and pressing the button under `Set insertion commands`, you can set 10 unique symbols as your favorites from the different built-in Unicode groups. 
+- To assign a favorite symbol, click a cell in the `Favorite Symbols` table and then click a cell from another table, and the latter's value will be assigned to the former.
+- To swap the positions of two different cells within the `Favorite Symbols Table`, simply click one and then click another.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+There are two ways to use your favorite symbols:
+1. Use one of the ten numbered `Insert favorite symbol` commands, with each number corresponding to a cell within the favorite symbols table.
+2. Use the `Open favorite symbol inserter` command to open up a modal where you can access all ten favorite symbols. If you have an active Markdown document, simply click the cells to insert their corresponding symbol into your note.
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+### Custom Symbol Group
 
-## Adding your plugin to the community plugin list
+If you have a large group of symbols that you use frequently, you can create a custom symbol group by going to the plugin's settings and pressing the button under `Edit custom symbol table`. There, you will be taken to a modal where you can perform the following actions:
+- Click a cell within any of the built-in symbol tables to add it to the custom table if it is not already present in the latter.
+- Click a symbol within the custom symbol table and click a cell within another table to assign the latter's value to the former. Does nothing if the latter's symbol is already within the custom table.
+- Click two different symbols within the custom symbol table to swap their values.
+- Double-click a cell in the custom symbol table to remove it.
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+To access your custom symbol group, simply use the `Open custom symbol group inserter` command to bring up a modal where you can click any the table cells to insert their symbols into the current active Markdown file.
 
-## How to use
+### Insert Last Used Symbol
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+If you have inserted a symbol using any of this plugin's aforementioned modals or commands, this plugin will remember it for as long as the current session is active or until another symbol is used. It can be inserted via the `Insert latest symbol` command. The last symbol used by this plugin is not saved between sessions.
 
-## Manually installing the plugin
+## Installation
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint ./src/`
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
+1. Download the `compiled-source.zip` folder from one of this repository's releases.
+2. Extract the `main.js`, `styles.css`, and `manifest.json` files from `compiled-source.zip` into your vault at the path `VaultFolder/.obsidian/plugins/insert-symbol/`.
