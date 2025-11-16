@@ -12,7 +12,7 @@ export default class AssignInsertionCommandsModal extends Modal {
 
     private plugin: InsertSymbolPlugin;
     private container: HTMLElement;
-    private symbolTables: SymbolTableCollection;
+    private builtinTables: SymbolTableCollection;
     private assignmentTable: InsertionCommandsAssignmentTable;
 
     constructor(plugin: InsertSymbolPlugin) {
@@ -27,7 +27,7 @@ export default class AssignInsertionCommandsModal extends Modal {
         
         this.assignmentTable = new InsertionCommandsAssignmentTable(this.plugin, this.container);
         
-        this.symbolTables = new SymbolTableCollection(
+        this.builtinTables = new SymbolTableCollection(
             this.container,
             this.plugin,
             async (cell: HTMLTableCellElement, symbol: string) => {
@@ -64,7 +64,22 @@ class InsertionCommandsAssignmentTable {
             this.container,
             this.plugin.settings.favoriteSymbols,
             (cell: HTMLTableCellElement) => {
-                this.selectCell(cell);
+                if (this.currentCell.isSelected() && !this.currentCell.equals(cell)) {
+                    const temporary = this.currentCell.getText();
+
+                    if (temporary !== undefined) {
+                        this.currentCell.setText(cell.getText());
+                        cell.setText(temporary);
+                    }
+
+                    this.unselectCell();
+                }
+                else if (this.currentCell.isSelected() && this.currentCell.equals(cell)) {
+                    this.unselectCell();
+                }
+                else {
+                    this.selectCell(cell);
+                }
             },
             new StaticTableFactory()
         );
