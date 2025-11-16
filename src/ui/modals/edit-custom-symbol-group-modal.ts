@@ -219,6 +219,7 @@ class CustomSymbolTable {
     }
 
     clear(): void {
+        this.currentCell.unselect();
         this.tableRef?.clearCells();
         this.plugin.settings.customSymbolGroup.symbols.length = 0;
     }
