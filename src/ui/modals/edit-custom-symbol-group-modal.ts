@@ -61,7 +61,13 @@ export default class EditCustomSymbolGroupModal extends Modal {
             this.container,
             this.plugin,
             async (cell: HTMLTableCellElement, symbol: string) => {
-                this.customTable.add(cell.getText());
+                if (this.customTable.hasSelectionMade() && !this.customTable.hasValue(cell.getText())) {
+                   this.customTable.setCell(cell); 
+                }
+                else {
+                    this.customTable.add(cell.getText());
+                }
+
                 await this.customTable.updateSettings();
             }
         );
@@ -110,7 +116,7 @@ class CustomSymbolTable {
                     return;
                 }
                 else if (!this.currentCell.isSelected()) {
-                    this.selectCell(cell);
+                    this.currentCell.select(cell);
                     return;
                 }
 
@@ -169,12 +175,43 @@ class CustomSymbolTable {
         await this.plugin.saveSettings();
     }
 
-    selectCell(cell: HTMLTableCellElement): void {
-        this.currentCell.select(cell);
+    hasSelectionMade(): boolean {
+        return this.currentCell.isSelected();
     }
 
-    unselectCell(): void {
+    setCell(cell: HTMLTableCellElement): void {
+        if (!this.currentCell.isSelected()) {
+            return;
+        }
+
+        this.currentCell.setText(cell.getText());
         this.currentCell.unselect();
+    }
+
+
+    hasValue(symbol: string): boolean {
+        let rowIndex = 0;
+        let row = this.display.getRow(rowIndex);
+        
+        while (row !== null) {
+            const cells = row.cells;
+
+            for (let i = 0; i < cells.length; i++) {
+                const cell = cells.item(i);
+
+                if (cell === null) {
+                    continue;
+                }
+                else if (cell.getText() === symbol) {
+                    return true;
+                }
+            }
+
+            rowIndex++;
+            row = this.display.getRow(rowIndex);
+        }
+
+        return false;
     }
 
     add(symbol: string): void {
