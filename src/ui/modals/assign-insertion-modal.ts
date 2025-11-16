@@ -31,6 +31,11 @@ export default class AssignInsertionCommandsModal extends Modal {
             this.container,
             this.plugin,
             async (cell: HTMLTableCellElement, symbol: string) => {
+                if (this.assignmentTable.hasValue(cell.getText())) {
+                    this.assignmentTable.unselectCell();
+                    return;
+                }
+                
                 await this.assignmentTable.updateSettings(symbol);
             }
         );
@@ -131,5 +136,30 @@ class InsertionCommandsAssignmentTable {
         }
 
         return columnIndex;
+    }
+
+    hasValue(symbol: string): boolean {
+        let rowIndex = 0;
+        let row = this.display.getRow(rowIndex);
+        
+        while (row !== null) {
+            const cells = row.cells;
+
+            for (let i = 0; i < cells.length; i++) {
+                const cell = cells.item(i);
+
+                if (cell === null) {
+                    continue;
+                }
+                else if (cell.getText() === symbol) {
+                    return true;
+                }
+            }
+
+            rowIndex++;
+            row = this.display.getRow(rowIndex);
+        }
+
+        return false;
     }
 }
