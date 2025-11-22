@@ -2,7 +2,7 @@
 
 ## Overview
 
-Insert Symbol is a plugin for Obsidian (https://obsidian.md) that provides a suite of functionality for inserting Unicode characters into notes.
+Insert Symbol is a desktop-only plugin for Obsidian (https://obsidian.md) that provides a suite of functionality for inserting Unicode characters into notes.
 
 Insert Symbol was inspired by the "Insert Symbol" functionality found in Microsoft Word. While Unicode symbols can be used within Obsidian, there is no native way to use additional characters without copying and pasting them from another document. This was especially inconvenient for my own projects, which occasionally require characters beyond those of a standard English keyboard.
 
