@@ -22,13 +22,6 @@ export enum UiEvent {
     CLICK = "click"
 }
 
-export function createParagraph(container: HTMLElement, text: string, className: string): HTMLParagraphElement {
-    const paragraph = container.createEl("p");
-    paragraph.setText(text);
-    paragraph.addClass(className);
-    return paragraph;
-}
-
 export function swapOutClass(element: HTMLElement, classToRemove: string, classToAdd: string): void {
     element.removeClass(classToRemove);
     element.addClass(classToAdd);
