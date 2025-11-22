@@ -6,9 +6,8 @@ export default class SymbolGroup {
     readonly description?: string;
     readonly symbols: Utf16Symbol[];
 
-    constructor(name: string, symbols: Utf16Range, description: string | undefined) {
+    constructor(name: string, symbols: Utf16Range) {
         this.name = name;
         this.symbols = symbols.toArray();
-        this.description = description;
     }
 }

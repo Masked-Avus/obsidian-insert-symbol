@@ -18,7 +18,7 @@ export default class SymbolTableDisplay {
         ) {
 
         container = container;
-        this.heading = new TableHeading(container, symbols.name, symbols.description);
+        this.heading = new TableHeading(container, symbols.name);
         this.table = tableFactory.createTable(container, symbols.symbols, onClickCallback);
         this.break = new Break(container);
 

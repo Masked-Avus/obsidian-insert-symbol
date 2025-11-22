@@ -26,21 +26,9 @@ export interface InsertSymbolPluginSettings {
 }
 
 export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
-    recentSymbols: new SymbolGroup(
-        "Recent",
-        getDefaultSymbolGroup(),
-        "Symbols most recently selected from the insertion modal."
-    ),
-    favoriteSymbols: new SymbolGroup(
-        "Favorite",
-        getDefaultSymbolGroup(),
-        "Symbols currently assigned to the insertion commands."
-    ),
-    customSymbolGroup: new SymbolGroup(
-        "Custom",
-        getDefaultSymbolGroup(),
-        "User-defined group of symbols."
-    )
+    recentSymbols: new SymbolGroup("Recent", getDefaultSymbolGroup()),
+    favoriteSymbols: new SymbolGroup("Favorite", getDefaultSymbolGroup()),
+    customSymbolGroup: new SymbolGroup("Custom", getDefaultSymbolGroup())
 }
 
 export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {
