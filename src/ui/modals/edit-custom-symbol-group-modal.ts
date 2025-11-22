@@ -37,24 +37,6 @@ export default class EditCustomSymbolGroupModal extends Modal {
         this.initializeContainer();
         this.addClearTableButton();
 
-        // TODO: Perhaps have the instructions on how to use the custom symbol table in the README instead,
-        //       since that is where one goes to learn how to use a plugin.
-        createParagraph(
-            this.container,
-            "1. To add a unique symbol to the custom table, click on one of the other tables below.",
-            CssClass.HELPER_TEXT
-        );
-        createParagraph(
-            this.container,
-            "2. To delete a symbol from the custom table, click on it twice.",
-            CssClass.HELPER_TEXT
-        );
-        createParagraph(
-            this.container, 
-            "3. To swap the positions of two symbols in the custom table, click on ",
-            CssClass.HELPER_TEXT
-        );
-
         this.customTable = new CustomSymbolTable(this.container, this.plugin);
 
         this.builtinTables = new SymbolTableCollection(
