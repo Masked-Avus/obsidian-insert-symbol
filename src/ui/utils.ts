@@ -43,10 +43,6 @@ export function overwriteTableRow(row: HTMLTableRowElement, symbols: string[]): 
     }
 
     for (let i = 0; i < symbols.length; i++) {
-        const cell = row.cells.item(i);
-        
-        if (cell !== null) {
-            cell.setText(symbols[i]);
-        }
+        row.cells.item(i)?.setText(symbols[i]);
     }
 }
