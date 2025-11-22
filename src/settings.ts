@@ -75,7 +75,6 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
             .setName("Edit custom symbol table")
             .setDesc("Assign existing symbols into a custom table.")
             .addButton(button => button
-                // Icon is temporary
                 .setIcon(Icon.TABLE)
                 .onClick(() => {
                     new EditCustomSymbolGroupModal(this.plugin).open();

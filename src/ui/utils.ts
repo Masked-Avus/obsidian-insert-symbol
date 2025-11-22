@@ -15,9 +15,7 @@ export enum Icon {
     TRASH = "trash-2",
     SWATCH_BOOK = "swatch-book",
     TABLE = "table",
-    RESTORE = "archive-restore",
-    DOWN = "chevron-down",
-    UP = "chevron-up"
+    RESTORE = "archive-restore"
 }
 
 export enum UiEvent {
