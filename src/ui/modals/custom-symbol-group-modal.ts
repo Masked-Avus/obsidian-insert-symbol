@@ -1,8 +1,4 @@
-import {
-    Editor,
-    Modal
-} from "obsidian";
-
+import { Editor, Modal } from "obsidian";
 import { updateRecentSymbols } from "src/settings";
 import InsertSymbolPlugin from "src/main";
 import StaticTable from "src/ui/elements/static-table";

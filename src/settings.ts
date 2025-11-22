@@ -1,15 +1,5 @@
-import {
-    PluginSettingTab,
-    App,
-    Setting
-} from "obsidian";
-
-import {
-   BLANK_SYMBOL,
-   isValidLength,
-   Utf16Symbol
-} from "./symbols/types";
-
+import { PluginSettingTab, App, Setting } from "obsidian";
+import { BLANK_SYMBOL, isValidLength, Utf16Symbol } from "./symbols/types";
 import { Icon } from "./ui/utils";
 import SymbolGroup from "./symbols/internal-symbol-group";
 import InsertSymbolPlugin from "./main";

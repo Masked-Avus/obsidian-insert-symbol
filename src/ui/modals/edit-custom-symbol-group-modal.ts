@@ -1,14 +1,5 @@
-import {
-    Modal,
-    Setting
-} from "obsidian";
-
-import {
-    createParagraph,
-    CssClass,
-    Icon
-} from "../utils";
-
+import { Modal, Setting } from "obsidian";
+import { CssClass, Icon } from "../utils";
 import InsertSymbolPlugin from "src/main";
 import SymbolTableDisplay from "../table-display";
 import SymbolTableCollection from "../table-collection";

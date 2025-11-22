@@ -1,7 +1,4 @@
-import {
-    CssClass,
-    swapOutClass
-} from "../utils";
+import { CssClass, swapOutClass } from "../utils";
 
 export default class SelectableCell {
     private cellRef: HTMLTableCellElement | null = null;

@@ -1,17 +1,5 @@
-import {
-    Editor,
-    MarkdownView,
-    Notice,
-    Plugin
-} from "obsidian";
-
-import {
-	InsertSymbolPluginSettings,
-	InsertSymbolPluginSettingTab,
-	DEFAULT_SETTINGS,
-    cleanSettings
-} from "./settings";
-
+import { Editor, MarkdownView, Notice, Plugin } from "obsidian";
+import { InsertSymbolPluginSettings, InsertSymbolPluginSettingTab, DEFAULT_SETTINGS, cleanSettings } from "./settings";
 import { Utf16Symbol } from "./symbols/types";
 import SymbolCollection from "./symbols/symbol-collection";
 import InsertSymbolModal from "./ui/modals/insertion-modal";

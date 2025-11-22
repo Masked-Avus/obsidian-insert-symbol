@@ -1,8 +1,4 @@
-import {
-    CssClass,
-    UiEvent
-} from "../utils";
-
+import { CssClass, UiEvent } from "../utils";
 import Displayable from "./displayable";
 
 export default class TableHeading {

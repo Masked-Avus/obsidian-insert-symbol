@@ -1,7 +1,4 @@
-import {
-    Utf16Code,
-    Utf16Symbol
-} from "./types";
+import { Utf16Code, Utf16Symbol } from "./types";
 
 export default class Utf16Range {
     constructor(

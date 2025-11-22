@@ -1,8 +1,4 @@
-import {
-    CssClass,
-    UiEvent
-} from "../utils";
-
+import { CssClass, UiEvent } from "../utils";
 import { Utf16Symbol } from "src/symbols/types";
 import { Notice } from "obsidian";
 import Table from "./table";
