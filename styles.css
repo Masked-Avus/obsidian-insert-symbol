@@ -6,13 +6,13 @@
 
 .symbol-table {
     width: 100%;
-    background-color: var(--table-background);/*var(--interactive-hover);*/
+    background-color: var(--table-background);
     table-layout: fixed;
 }
 
 .symbol-table, .symbol-table-cell, .selected-symbol-table-cell {
-    border-color: var(--table-border-color);/*black;*/
-    border-width: var(--table-border-width);/*var(--border-width);*/
+    border-color: var(--table-border-color);
+    border-width: var(--table-border-width);
     border-style: solid;
     border-radius: var(--radius-m);
     padding: 4px;
@@ -22,8 +22,8 @@
 }
 
 .symbol-table-cell {
-    font-size: var(--table-text-size);/*var(--font-text-size);*/
-    background-color: var(--table-background);/*var(--interactive-normal);*/
+    font-size: var(--table-text-size);
+    background-color: var(--table-background);
     width: var(--icon-size);
 }
 
@@ -44,9 +44,6 @@
     border-width: 100%;
     border-width: var(--border-width);
     border-radius: var(--radius-m);
-}
-
-.title-heading {
     padding: 4px;
 }
 

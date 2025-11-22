@@ -41,7 +41,6 @@ export default class InsertFavoriteSymbolModal extends Modal {
 
     onClose(): void {
         this.contentEl.empty();
-
     }
 
     private initializeContainer(): void {
