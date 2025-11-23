@@ -60,10 +60,6 @@ export default class SymbolCollection {
         return symbols;
     }
 
-    forEach(callback: (symbolGroup: SymbolGroup) => void): void {
-        this.symbols.forEach(callback);
-    }
-
     contains(symbols: SymbolGroup): boolean {
         for (const symbolGroup of this.symbols) {
             if (symbolGroup.name == symbols.name) {
