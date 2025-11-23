@@ -1,4 +1,4 @@
-import { CssClass, UiEvent } from "../utils";
+import { CssClass } from "../utils";
 import { Utf16Symbol } from "src/symbols/types";
 import Displayable from "./displayable";
 
@@ -64,16 +64,13 @@ export default abstract class Table implements Displayable {
                 row = this.internalTableRef.insertRow();
                 cellPosition = 1;
             }
+
+            const symbol = symbols[i];
             
             const cell = row.insertCell();
             cell.addClass(CssClass.TABLE_CELL);
-
-            const symbol = symbols[i];
             cell.setText(symbol);
-            
-            cell.addEventListener(UiEvent.CLICK, () => {
-                this.internalOnCellClickCallback(cell, symbol);
-            });
+            cell.onClickEvent(() => this.internalOnCellClickCallback(cell, symbol));
 
             cellPosition++;
         }

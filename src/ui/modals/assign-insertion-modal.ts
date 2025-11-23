@@ -58,11 +58,7 @@ class InsertionCommandsAssignmentTable {
     private currentCell: SelectableCell = new SelectableCell();
     private display: SymbolTableDisplay;
 
-    constructor(
-        plugin: InsertSymbolPlugin,
-        container: HTMLElement,
-        ) {
-        
+    constructor(plugin: InsertSymbolPlugin, container: HTMLElement) {
         this.container = container;
         this.plugin = plugin;
         this.display = new SymbolTableDisplay(
@@ -116,29 +112,6 @@ class InsertionCommandsAssignmentTable {
         this.currentCell.unselect();
     }
 
-    private findCellIndex(): number {
-        if (this.currentCell === null) {
-            throw new Error("Cannot find cell because no cell has been selected");
-        }
-
-        let columnIndex = -1;
-
-        for (let i = 0; i < StaticTable.MAXIMUM_COLUMNS; i++) {
-            const cell = this.display.getCell(0, i);
-            
-            if ((cell !== null) && this.currentCell.equals(cell)) {
-                columnIndex = i;
-                break;
-            }
-        }
-
-        if (columnIndex < 0) {
-            throw new Error("Could not find target cell in insertion command assignment table");
-        }
-
-        return columnIndex;
-    }
-
     hasValue(symbol: string): boolean {
         let rowIndex = 0;
         let row = this.display.getRow(rowIndex);
@@ -162,5 +135,28 @@ class InsertionCommandsAssignmentTable {
         }
 
         return false;
+    }
+
+    private findCellIndex(): number {
+        if (this.currentCell === null) {
+            throw new Error("Cannot find cell because no cell has been selected");
+        }
+
+        let columnIndex = -1;
+
+        for (let i = 0; i < StaticTable.MAXIMUM_COLUMNS; i++) {
+            const cell = this.display.getCell(0, i);
+            
+            if ((cell !== null) && this.currentCell.equals(cell)) {
+                columnIndex = i;
+                break;
+            }
+        }
+
+        if (columnIndex < 0) {
+            throw new Error("Could not find target cell in insertion command assignment table");
+        }
+
+        return columnIndex;
     }
 }

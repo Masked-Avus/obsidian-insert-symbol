@@ -1,4 +1,4 @@
-import { CssClass, UiEvent } from "../utils";
+import { CssClass } from "../utils";
 import Displayable from "./displayable";
 
 export default class TableHeading {
@@ -12,7 +12,7 @@ export default class TableHeading {
         this.headingRef = container.createEl("h4");
         this.headingRef.setText(this.title);
         this.headingRef.addClass(CssClass.TITLE_HEADING);
-        this.headingRef.addEventListener(UiEvent.CLICK, () => {
+        this.headingRef.onClickEvent(() => {
             for (const displayable of this.displayables) {
                 if (displayable.isHidden()) {
                     displayable.display();

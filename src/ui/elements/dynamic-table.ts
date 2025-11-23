@@ -1,4 +1,4 @@
-import { CssClass, UiEvent } from "../utils";
+import { CssClass } from "../utils";
 import { Utf16Symbol } from "src/symbols/types";
 import { Notice } from "obsidian";
 import Table from "./table";
@@ -84,9 +84,11 @@ export default class DynamicTable extends Table {
         cell.addClass(CssClass.TABLE_CELL);
         cell.setText(symbol);
 
-        cell.addEventListener(UiEvent.CLICK, () => {
-            this.onCellClickCallback(cell, symbol);
-        });
+        cell.onClickEvent(() => this.onCellClickCallback(cell, symbol));
+
+        // cell.addEventListener(UiEvent.CLICK, () => {
+        //     this.onCellClickCallback(cell, symbol);
+        // });
 
         this.cellCount++;
     }

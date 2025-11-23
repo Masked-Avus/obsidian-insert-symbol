@@ -18,10 +18,6 @@ export enum Icon {
     RESTORE = "archive-restore"
 }
 
-export enum UiEvent {
-    CLICK = "click"
-}
-
 export function swapOutClass(element: HTMLElement, classToRemove: string, classToAdd: string): void {
     element.removeClass(classToRemove);
     element.addClass(classToAdd);
