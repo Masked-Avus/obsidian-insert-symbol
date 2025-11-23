@@ -75,7 +75,8 @@ class RecentSymbolsTable {
                 this.editor.replaceSelection(cell.getText());
                 this.plugin.lastSymbol = symbol;
             },
-            new StaticTableFactory()
+            new StaticTableFactory(),
+            this.plugin.settings.collapseTablesByDefault
         );
     }
 

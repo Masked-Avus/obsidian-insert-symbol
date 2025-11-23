@@ -110,6 +110,7 @@ class CustomSymbolTable {
                 this.currentCell.unselect();
             },
             new DynamicTableFactory(),
+            this.plugin.settings.collapseTablesByDefault,
             // This is a bit of a hack so I can get access to the DynamicTable's specialized functionality.
             (heading: TableHeading, table: Table) => {
                 if (table instanceof DynamicTable) {

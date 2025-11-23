@@ -38,7 +38,8 @@ export default class SymbolTableCollection {
             this.container,
             symbolGroup,
             this.onClickCallback,
-            this.tableFactory
+            this.tableFactory,
+            this.plugin.settings.collapseTablesByDefault
         );
     }
 }

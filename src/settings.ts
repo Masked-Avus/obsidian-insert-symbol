@@ -13,12 +13,14 @@ export interface InsertSymbolPluginSettings {
     recentSymbols: SymbolGroup;
     favoriteSymbols: SymbolGroup;
     customSymbolGroup: SymbolGroup;
+    collapseTablesByDefault: boolean;
 }
 
 export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
     recentSymbols: new SymbolGroup("Recent", getDefaultSymbolGroup()),
     favoriteSymbols: new SymbolGroup("Favorite", getDefaultSymbolGroup()),
-    customSymbolGroup: new SymbolGroup("Custom", getDefaultSymbolGroup())
+    customSymbolGroup: new SymbolGroup("Custom", getDefaultSymbolGroup()),
+    collapseTablesByDefault: false
 }
 
 export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {
@@ -39,6 +41,7 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
         this.initializeContainer();
         this.addAssignInsertionCommandsButton();
         this.addEditCustomSymbolGroupButton();
+        this.addCollapseSymbolGroupTablesByDefaultToggle();
     }
 
     private initializeContainer(): void {
@@ -68,6 +71,20 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
                 .setIcon(Icon.TABLE)
                 .onClick(() => {
                     new EditCustomSymbolGroupModal(this.plugin).open();
+                }
+            )
+        );
+    }
+
+    private addCollapseSymbolGroupTablesByDefaultToggle() {
+        new Setting(this.container)
+            .setName("Symbol tables collapsed by default")
+            .setDesc("Determines whether or not all symbol table in certain inserters and the favorite symbols assigner are collapsed by default.")
+            .addToggle(toggle => toggle
+                .setValue(this.plugin.settings.collapseTablesByDefault)
+                .onChange(async (value: boolean) => {
+                    this.plugin.settings.collapseTablesByDefault = value;
+                    await this.plugin.saveSettings();
                 }
             )
         );

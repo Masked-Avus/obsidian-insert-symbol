@@ -14,6 +14,7 @@ export default class SymbolTableDisplay {
         symbols: SymbolGroup,
         onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void,
         tableFactory: TableFactory,
+        displayCollapsed?: boolean,
         onElementsCreatedCallback?: (heading: TableHeading, table: Table) => void
         ) {
 
@@ -24,6 +25,10 @@ export default class SymbolTableDisplay {
 
         this.heading.addListener(this.table);
         this.heading.addListener(this.break);
+
+        if (displayCollapsed) {
+            this.heading.toggleHide();
+        }
 
         if (onElementsCreatedCallback !== undefined) {
             onElementsCreatedCallback(this.heading, this.table);

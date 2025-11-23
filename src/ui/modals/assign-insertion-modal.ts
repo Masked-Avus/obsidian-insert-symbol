@@ -86,7 +86,8 @@ class InsertionCommandsAssignmentTable {
                     this.selectCell(cell);
                 }
             },
-            new StaticTableFactory()
+            new StaticTableFactory(),
+            this.plugin.settings.collapseTablesByDefault
         );
     }
 

@@ -27,4 +27,8 @@ export default class TableHeading {
     addListener(displayable: Displayable): void {
         this.displayables.push(displayable);
     }
+
+    toggleHide(): void {
+        this.headingRef.click();
+    }
 }
