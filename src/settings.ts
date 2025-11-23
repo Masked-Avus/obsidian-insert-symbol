@@ -79,7 +79,7 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
     private addCollapseSymbolGroupTablesByDefaultToggle() {
         new Setting(this.container)
             .setName("Symbol tables collapsed by default")
-            .setDesc("Determines whether or not all symbol table in certain inserters and the favorite symbols assigner are collapsed by default.")
+            .setDesc("Set whether or not all collapsable symbol tables are collapsed by default.")
             .addToggle(toggle => toggle
                 .setValue(this.plugin.settings.collapseTablesByDefault)
                 .onChange(async (value: boolean) => {
