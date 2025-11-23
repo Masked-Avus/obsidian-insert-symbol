@@ -22,7 +22,7 @@ export default class SymbolTableCollection {
     }
 
     private build(): void {
-        const symbolGroups = this.plugin.symbolGroups.symbolGroups;
+        const symbolGroups = this.plugin.symbolGroups.getAllSymbols();
 
         for (let i = 0; i < symbolGroups.length; i++) {
             const group = this.plugin.symbolGroups.getSymbols(symbolGroups[i]);

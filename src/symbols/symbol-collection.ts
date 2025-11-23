@@ -1,21 +1,12 @@
 import SymbolGroup from "./internal-symbol-group";
+import { Utf16Symbol } from "./types";
 
 // Holds all internally-defined symbol groups.
 export default class SymbolCollection {
     private readonly symbols: SymbolGroup[] = [];
 
-    get symbolGroups(): string[] {
-        const tableNames: string[] = [];
-
-        this.symbols.forEach((symbolGroup: SymbolGroup) => {
-            tableNames.push(symbolGroup.name);
-        });
-
-        return tableNames;
-    }
-
     get count(): number {
-        return this.symbolGroups.length;
+        return this.symbols.length;
     }
 
     getSymbols(name: string): SymbolGroup | undefined {
@@ -57,6 +48,16 @@ export default class SymbolCollection {
         });
 
         return groups;
+    }
+
+    getAllSymbols(): Utf16Symbol[] {
+        const symbols: string[] = [];
+
+        this.symbols.forEach((symbolGroup: SymbolGroup) => {
+            symbols.push(symbolGroup.name);
+        });
+
+        return symbols;
     }
 
     forEach(callback: (symbolGroup: SymbolGroup) => void): void {
