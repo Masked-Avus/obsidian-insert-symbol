@@ -1,7 +1,6 @@
 import SymbolGroup from "./symbol-group";
 import { Utf16Symbol } from "./types";
 
-// Holds all internally-defined symbol groups.
 export default class SymbolCollection {
     private readonly symbols: SymbolGroup[] = [];
 
