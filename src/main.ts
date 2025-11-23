@@ -5,6 +5,7 @@ import SymbolCollection from "./symbols/symbol-collection";
 import BuiltinSymbolsInsertionModal from "./ui/modals/builtin-symbols-insertion-modal";
 import DEFAULT_SYMBOLS from "./symbols/default-symbols";
 import SymbolInsertionModal from "./ui/modals/symbol-insertion-modal";
+import SymbolGroupSearchModal from "./ui/modals/symbol-group-search-modal";
 
 export default class InsertSymbolPlugin extends Plugin {
     private static readonly FAVORITE_SYMBOL_INSERTION_COMMAND_COUNT: number = 10;
@@ -25,6 +26,7 @@ export default class InsertSymbolPlugin extends Plugin {
         this.addOpenCustomSymbolGroupModalCommand();
         this.addFavoriteSymbolCommands();
         this.addInsertMostRecentSymbolCommand();
+        this.addSearchForSymbolGroupCommand();
         this.addSettingTab(new InsertSymbolPluginSettingTab(this.app, this));
     }
     
@@ -130,6 +132,22 @@ export default class InsertSymbolPlugin extends Plugin {
                 }
             });
         }
+    }
+
+    private addSearchForSymbolGroupCommand(): void {
+        this.addCommand({
+            id: "search-for-symbol-group",
+            name: "Search for symbol group",
+            editorCallback: (editor: Editor, view: MarkdownView) => {
+                if (!view) {
+                    return false;
+                }
+
+                new SymbolGroupSearchModal(this, this.app, editor).open();
+
+                return true;
+            }
+        });
     }
 
     private addInsertMostRecentSymbolCommand(): void {

@@ -14,6 +14,10 @@ export default class SymbolCollection {
         return tableNames;
     }
 
+    get count(): number {
+        return this.symbolGroups.length;
+    }
+
     getSymbols(name: string): SymbolGroup | undefined {
         for (const symbolGroup of this.symbols) {
             if (symbolGroup.name === name) {
@@ -43,6 +47,16 @@ export default class SymbolCollection {
         }
 
         return false;
+    }
+
+    getArrayCopy(): SymbolGroup[] {
+        const groups: SymbolGroup[] = [];
+
+        this.symbols.forEach((symbolGroup: SymbolGroup) => {
+            groups.push(symbolGroup);
+        });
+
+        return groups;
     }
 
     forEach(callback: (symbolGroup: SymbolGroup) => void): void {
