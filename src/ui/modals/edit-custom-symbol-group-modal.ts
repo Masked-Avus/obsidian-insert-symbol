@@ -13,8 +13,8 @@ import logError from "src/logging";
 export default class EditCustomSymbolGroupModal extends Modal {
     private static readonly TITLE: string = "Edit Custom Symbol Table";
 
+    private readonly plugin: InsertSymbolPlugin;
     private container: HTMLElement;
-    private plugin: InsertSymbolPlugin;
     private customTable: CustomSymbolTable;
     private builtinTables: SymbolTableCollection;
 

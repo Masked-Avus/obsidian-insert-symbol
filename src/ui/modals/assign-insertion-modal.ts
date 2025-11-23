@@ -10,7 +10,7 @@ import StaticTableFactory from "../factories/static-table-factory";
 export default class AssignInsertionCommandsModal extends Modal {
     private static readonly TITLE: string = "Favorite Symbol Assignment";
 
-    private plugin: InsertSymbolPlugin;
+    private readonly plugin: InsertSymbolPlugin;
     private container: HTMLElement;
     private builtinTables: SymbolTableCollection;
     private assignmentTable: InsertionCommandsAssignmentTable;
