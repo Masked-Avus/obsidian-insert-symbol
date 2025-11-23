@@ -1,7 +1,7 @@
 import { PluginSettingTab, App, Setting } from "obsidian";
 import { BLANK_SYMBOL, isValidLength, Utf16Symbol } from "./symbols/types";
 import { Icon } from "./ui/utils";
-import SymbolGroup from "./symbols/internal-symbol-group";
+import SymbolGroup from "./symbols/symbol-group";
 import InsertSymbolPlugin from "./main";
 import AssignInsertionCommandsModal from "./ui/modals/assign-insertion-modal";
 import EditCustomSymbolGroupModal from "./ui/modals/edit-custom-symbol-group-modal";

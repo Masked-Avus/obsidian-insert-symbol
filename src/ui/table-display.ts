@@ -2,7 +2,7 @@ import Break from "./elements/break";
 import Table from "./elements/table";
 import TableHeading from "./elements/heading";
 import TableFactory from "./factories/types";
-import SymbolGroup from "src/symbols/internal-symbol-group";
+import SymbolGroup from "src/symbols/symbol-group";
 
 export default class SymbolTableDisplay {
     private readonly heading: TableHeading;

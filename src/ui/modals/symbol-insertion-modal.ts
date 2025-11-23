@@ -2,7 +2,7 @@ import { Editor, Modal } from "obsidian";
 import { updateRecentSymbols } from "src/settings";
 import InsertSymbolPlugin from "src/main";
 import StaticTable from "src/ui/elements/static-table";
-import SymbolGroup from "src/symbols/internal-symbol-group";
+import SymbolGroup from "src/symbols/symbol-group";
 
 export default class SymbolInsertionModal extends Modal {
     private readonly plugin: InsertSymbolPlugin;

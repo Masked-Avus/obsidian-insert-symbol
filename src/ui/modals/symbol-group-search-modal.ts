@@ -1,6 +1,6 @@
 import { App, Editor, SuggestModal } from "obsidian";
 import InsertSymbolPlugin from "src/main";
-import SymbolGroup from "src/symbols/internal-symbol-group";
+import SymbolGroup from "src/symbols/symbol-group";
 import SymbolInsertionModal from "./symbol-insertion-modal";
 
 export default class SymbolGroupSearchModal extends SuggestModal<SymbolGroup> {

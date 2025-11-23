@@ -1,5 +1,5 @@
 import InsertSymbolPlugin from "src/main";
-import SymbolGroup from "src/symbols/internal-symbol-group";
+import SymbolGroup from "src/symbols/symbol-group";
 import SymbolTableDisplay from "./table-display";
 import StaticTableFactory from "./factories/static-table-factory";
 

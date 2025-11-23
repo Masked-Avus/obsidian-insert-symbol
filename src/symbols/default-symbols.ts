@@ -5,7 +5,7 @@ one's internet.
 */
 
 import Utf16Range from "./range";
-import SymbolGroup from "./internal-symbol-group";
+import SymbolGroup from "./symbol-group";
 
 const DEFAULT_SYMBOLS: SymbolGroup[] = [
     new SymbolGroup(
