@@ -2,20 +2,23 @@ import { Editor, Modal } from "obsidian";
 import { updateRecentSymbols } from "src/settings";
 import InsertSymbolPlugin from "src/main";
 import StaticTable from "src/ui/elements/static-table";
+import SymbolGroup from "src/symbols/internal-symbol-group";
 
-export default class CustomSymbolGroupModal extends Modal {
-    private static readonly TITLE: string = "Custom Symbol Group";
+export default class SymbolInsertionModal extends Modal {
+    private readonly plugin: InsertSymbolPlugin;
+    private readonly editor: Editor;
+    private readonly table: StaticTable;
+    private readonly symbolGroup: SymbolGroup;
+    private readonly title: string;
     private container: HTMLElement;
-    private plugin: InsertSymbolPlugin;
-    private editor: Editor;
-    private table: StaticTable;
 
-    constructor(plugin: InsertSymbolPlugin, editor: Editor) {
+    constructor(plugin: InsertSymbolPlugin, editor: Editor, symbolGroup: SymbolGroup, title: string) {
         super(plugin.app);
         this.plugin = plugin;
         this.editor = editor;
-
-        this.setTitle(CustomSymbolGroupModal.TITLE);
+        this.symbolGroup = symbolGroup;
+        this.title = title;
+        this.setTitle(this.title);
     }
 
     onOpen(): void {
@@ -23,7 +26,7 @@ export default class CustomSymbolGroupModal extends Modal {
         
         new StaticTable(
             this.container,
-            this.plugin.settings.customSymbolGroup.symbols,
+            this.symbolGroup.symbols,
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
                 

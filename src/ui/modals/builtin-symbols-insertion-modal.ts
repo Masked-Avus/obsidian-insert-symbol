@@ -6,7 +6,7 @@ import SymbolTableDisplay from "../table-display";
 import SymbolTableCollection from "../table-collection";
 import StaticTableFactory from "../factories/static-table-factory";
 
-export default class InsertSymbolModal extends Modal {
+export default class BuiltinSymbolsInsertionModal extends Modal {
     private static readonly TITLE = "Symbol Inserter";
 
     private readonly plugin: InsertSymbolPlugin;
@@ -20,7 +20,7 @@ export default class InsertSymbolModal extends Modal {
         this.plugin = plugin;
         this.editor = editor;
 
-        this.setTitle(InsertSymbolModal.TITLE);
+        this.setTitle(BuiltinSymbolsInsertionModal.TITLE);
     }
 
     onOpen(): void {
@@ -37,7 +37,9 @@ export default class InsertSymbolModal extends Modal {
             this.plugin,
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
+
                 this.recentSymbols.update(symbol);
+
                 await this.plugin.saveSettings();
                 this.plugin.lastSymbol = symbol;
             }

@@ -2,10 +2,9 @@ import { Editor, MarkdownView, Notice, Plugin } from "obsidian";
 import { InsertSymbolPluginSettings, InsertSymbolPluginSettingTab, DEFAULT_SETTINGS, cleanSettings } from "./settings";
 import { Utf16Symbol } from "./symbols/types";
 import SymbolCollection from "./symbols/symbol-collection";
-import InsertSymbolModal from "./ui/modals/insertion-modal";
-import InsertFavoriteSymbolModal from "./ui/modals/favorites-insertion-modal";
+import BuiltinSymbolsInsertionModal from "./ui/modals/builtin-symbols-insertion-modal";
 import DEFAULT_SYMBOLS from "./symbols/default-symbols";
-import CustomSymbolGroupModal from "./ui/modals/custom-symbol-group-modal";
+import SymbolInsertionModal from "./ui/modals/symbol-insertion-modal";
 
 export default class InsertSymbolPlugin extends Plugin {
     private static readonly FAVORITE_SYMBOL_INSERTION_COMMAND_COUNT: number = 10;
@@ -64,7 +63,7 @@ export default class InsertSymbolPlugin extends Plugin {
                     return false;
                 }
 
-                new InsertSymbolModal(this, editor).open();
+                new BuiltinSymbolsInsertionModal(this, editor).open();
 
                 return true;
             }
@@ -79,8 +78,13 @@ export default class InsertSymbolPlugin extends Plugin {
                 if (!view) {
                     return false;
                 }
-
-                new InsertFavoriteSymbolModal(this, editor).open();
+                
+                new SymbolInsertionModal(
+                    this,
+                    editor,
+                    this.settings.favoriteSymbols,
+                    "Favorite Symbols"
+                ).open();
 
                 return true;
             }
@@ -96,7 +100,12 @@ export default class InsertSymbolPlugin extends Plugin {
                     return false;
                 }
 
-                new CustomSymbolGroupModal(this, editor).open();
+                new SymbolInsertionModal(
+                    this,
+                    editor,
+                    this.settings.customSymbolGroup,
+                    "Custom Symbol Group"
+                ).open();
 
                 return true;
             }
