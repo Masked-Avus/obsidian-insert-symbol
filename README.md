@@ -31,6 +31,10 @@ If you have a large group of symbols that you use frequently, you can create a c
 
 To access your custom symbol group, simply use the `Open custom symbol group inserter` command to bring up a modal where you can click any the table cells to insert their symbols into the current active Markdown file.
 
+### Search for Symbol Group
+
+If you know what specific symbol group you want to use and do not want to bother scrolling through the insertion modal to get to it, you can use the `Search for symbol group` command to find it quickly.
+
 ### Insert Last Used Symbol
 
 If you have inserted a symbol using any of this plugin's aforementioned modals or commands, this plugin will remember it for as long as the current session is active or until another symbol is used. It can be inserted via the `Insert latest symbol` command. The last symbol used by this plugin is not saved between sessions.
