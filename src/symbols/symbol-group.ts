@@ -3,7 +3,6 @@ import Utf16Range from "./range";
 
 export default class SymbolGroup {
     readonly name: string;
-    readonly description?: string;
     readonly symbols: Utf16Symbol[];
 
     constructor(name: string, symbols: Utf16Range) {
