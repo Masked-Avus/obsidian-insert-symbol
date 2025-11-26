@@ -3,8 +3,13 @@ import { Utf16Symbol } from "./types";
 
 export default class SymbolCollection {
     private readonly symbols: SymbolGroup[] = [];
+    private internalSymbolCount: number = 0;
 
-    get count(): number {
+    get symbolCount(): number {
+        return this.internalSymbolCount;
+    }
+
+    get symbolGroupCount(): number {
         return this.symbols.length;
     }
 
@@ -24,14 +29,19 @@ export default class SymbolCollection {
         }
 
         this.symbols.push(symbols);
+        this.internalSymbolCount += symbols.symbols.length;
 
         return true;
     }
 
     removeSymbols(name: string): boolean {
         for (let i = 0; i < this.symbols.length; i++) {
-            if (this.symbols[i].name === name) {
-                removeAt(this.symbols, i);
+            const current = this.symbols[i];
+
+            if (current.name === name) {
+                this.symbols.splice(i, 1);
+                //removeAt(this.symbols, i);
+                this.internalSymbolCount -= current.symbols.length;
                 return true;
             }
         }
@@ -70,6 +80,7 @@ export default class SymbolCollection {
     }
 }
 
+/*
 function removeAt(symbols: SymbolGroup[], index: number): void {
     if ((index < 0) || (index >= symbols.length)) {
         return;
@@ -77,3 +88,4 @@ function removeAt(symbols: SymbolGroup[], index: number): void {
 
     symbols.splice(index, 1);
 }
+*/

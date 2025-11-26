@@ -3,7 +3,8 @@ import { Utf16Code, Utf16Symbol } from "./types";
 export default class Utf16Range {
     constructor(
         private start: Utf16Code,
-        private end: Utf16Code
+        private end: Utf16Code,
+        private excludedSymbols?: Utf16Code[]
         ) {
         
         if (this.start > this.end) {
@@ -22,7 +23,7 @@ export default class Utf16Range {
     }
 
     getCount(): number {
-        return (this.end > this.start) ? (this.end - this.start) + 1 : 0;
+        return (this.end > this.start) ? ((this.end - this.start) + 1) : 0;
     }
 
     getSymbol(index: number): Utf16Code {
@@ -36,12 +37,30 @@ export default class Utf16Range {
     }
 
     toArray(): Utf16Symbol[] {
-        const array: Utf16Symbol[] = new Array(this.getCount());
+        const array: Utf16Symbol[] = [];
 
         for (let i = 0; i < this.getCount(); i++) {
-            array[i] = String.fromCharCode(this.getSymbol(i));
+            const symbolCode = this.getSymbol(i);
+
+            if (!this.matchSymbolCode(symbolCode)) {
+                array.push(String.fromCharCode(symbolCode));
+            }
         }
 
         return array;
+    }
+
+    private matchSymbolCode(symbolCode: Utf16Code): boolean {
+        if (this.excludedSymbols === undefined) {
+            return false;
+        }
+
+        for (let i = 0; i < this.excludedSymbols.length; i++) {
+            if (this.excludedSymbols[i] === symbolCode) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
