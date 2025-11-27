@@ -13,8 +13,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Latin-1 Supplement",
-        new Utf16Range(0x00a1, 0x00ff,
-            [
+        new Utf16Range(0x00a1, 0x00ff, [
                 0x00ad
             ]
         )
@@ -41,8 +40,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Greek and Coptic",
-        new Utf16Range(0x0370, 0x03ff,
-            [
+        new Utf16Range(0x0370, 0x03ff, [
                 0x0378, 0x0379, 0x0380, 0x0381, 0x0382,
                 0x0383, 0x038b, 0x038d0, 0x03a2
             ]
@@ -58,8 +56,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Armenian",
-        new Utf16Range(0x0531, 0x058f,
-            [
+        new Utf16Range(0x0531, 0x058f, [
                 0x0557, 0x0558, 0x05eb, 0x05ec, 0x05ed,
                 0x05ee
             ]
@@ -67,8 +64,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Hebrew",
-        new Utf16Range(0x0591, 0x05f4,
-            [
+        new Utf16Range(0x0591, 0x05f4, [
                 0x05c8, 0x05c9, 0x05ca, 0x05cb, 0x05cc,
                 0x05cd, 0x05ce, 0x05cf, 0x05eb, 0x05ec,
                 0x05ed, 0x05ee
@@ -81,8 +77,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Syriac",
-        new Utf16Range(0x0700, 0x074f,
-            [
+        new Utf16Range(0x0700, 0x074f, [
                 0x070e, 0x074b, 0x074c
             ]
         )
@@ -101,8 +96,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Tamil",
-        new Utf16Range(0x0b82, 0x0bfa,
-            [
+        new Utf16Range(0x0b82, 0x0bfa, [
                 0x0b84, 0x0b8b, 0x0b8c, 0x0b8d, 0x0b91,
                 0x0b96, 0x0b97, 0x0b98, 0x0b9b, 0x0b9d,
                 0x0ba0, 0x0ba1, 0x0ba2, 0x0ba5, 0x0ba6,
@@ -118,8 +112,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Georgian",
-        new Utf16Range(0x10a0, 0x10ff,
-            [
+        new Utf16Range(0x10a0, 0x10ff, [
                 0x10c6, 0x10c8, 0x10c9, 0x10ca, 0x10cb,
                 0x10cc, 0x10ce, 0x10cf
             ]
@@ -127,8 +120,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Ge'ez",
-        new Utf16Range(0x1200, 0x137c,
-            [
+        new Utf16Range(0x1200, 0x137c, [
                 0x1249, 0x124e, 0x124f, 0x1257, 0x1259,
                 0x125e, 0x125f, 0x1289, 0x128e, 0x128f,
                 0x12b1, 0x12b6, 0x12b7, 0x12bf, 0x12c1,
@@ -139,16 +131,14 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Combining Diactical Marks Extended",
-        new Utf16Range(0x1ab0, 0x1ace,
-            [
+        new Utf16Range(0x1ab0, 0x1ace, [
                 0x1ac1, 0x1ac2, 0x1ac3, 0x1ac4, 0x1ac6
             ]
         )
     ),
     new SymbolGroup(
         "Buginese",
-        new Utf16Range(0x1c90, 0x1cbf,
-            [
+        new Utf16Range(0x1c90, 0x1cbf, [
                 0x1cbb, 0x1cbc
             ]
         )
@@ -163,8 +153,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Combining Diacritical Marks Supplement",
-        new Utf16Range(0x1dc0, 0x1dff,
-            [
+        new Utf16Range(0x1dc0, 0x1dff, [
                 0x1dfa
             ]
         )
@@ -175,8 +164,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Greek Extended",
-        new Utf16Range(0x1f00, 0x1ffe,
-            [
+        new Utf16Range(0x1f00, 0x1ffe, [
                 0x1f16, 0x1f17, 0x1f1e, 0x1f1f, 0x1f46,
                 0x1f47, 0x1f4e, 0x1f4f, 0x1f58, 0x1f5a,
                 0x1f5c, 0x1f5e, 0x1f7e, 0x1f7f, 0x1fb5,
@@ -187,8 +175,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "General Punctuation",
-        new Utf16Range(0x2013, 0x205e,
-            [
+        new Utf16Range(0x2013, 0x205e, [
                 0x2012, 0x2028, 0x2029, 0x202a, 0x202b,
                 0x202c, 0x202d, 0x202e, 0x202f
             ]
@@ -196,8 +183,7 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Superscripts and Subscripts",
-        new Utf16Range(0x2070, 0x209c,
-            [
+        new Utf16Range(0x2070, 0x209c, [
                 0x2072, 0x2073, 0x208f
             ]
         )
