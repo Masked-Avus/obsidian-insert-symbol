@@ -139,7 +139,11 @@ const DEFAULT_SYMBOLS: SymbolGroup[] = [
     ),
     new SymbolGroup(
         "Combining Diactical Marks Extended",
-        new Utf16Range(0x1ab0, 0x1aff)
+        new Utf16Range(0x1ab0, 0x1ace,
+            [
+                0x1ac1, 0x1ac2, 0x1ac3, 0x1ac4, 0x1ac6
+            ]
+        )
     ),
     new SymbolGroup(
         "Buginese",
