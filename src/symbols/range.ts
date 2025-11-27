@@ -22,7 +22,7 @@ export default class Utf16Range {
         return this.end;
     }
 
-    getCount(): number {
+    get count(): number {
         return (this.end > this.start) ? ((this.end - this.start) + 1) : 0;
     }
 
@@ -39,7 +39,7 @@ export default class Utf16Range {
     toArray(): Utf16Symbol[] {
         const array: Utf16Symbol[] = [];
 
-        for (let i = 0; i < this.getCount(); i++) {
+        for (let i = 0; i < this.count; i++) {
             const symbolCode = this.getSymbol(i);
 
             if (!this.matchSymbolCode(symbolCode)) {
