@@ -14,14 +14,6 @@ export default class Utf16Range {
         }
     }
 
-    getFirst(): Utf16Code {
-        return this.start;
-    }
-
-    getLast(): Utf16Code {
-        return this.end;
-    }
-
     get count(): number {
         return (this.end > this.start) ? ((this.end - this.start) + 1) : 0;
     }
