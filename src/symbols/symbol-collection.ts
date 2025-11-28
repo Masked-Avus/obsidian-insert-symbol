@@ -40,7 +40,6 @@ export default class SymbolCollection {
 
             if (current.name === name) {
                 this.symbols.splice(i, 1);
-                //removeAt(this.symbols, i);
                 this.internalSymbolCount -= current.symbols.length;
                 return true;
             }
@@ -79,13 +78,3 @@ export default class SymbolCollection {
         return false;
     }
 }
-
-/*
-function removeAt(symbols: SymbolGroup[], index: number): void {
-    if ((index < 0) || (index >= symbols.length)) {
-        return;
-    }
-
-    symbols.splice(index, 1);
-}
-*/
