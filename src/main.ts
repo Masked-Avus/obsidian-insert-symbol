@@ -75,7 +75,7 @@ export default class InsertSymbolPlugin extends Plugin {
     private addOpenFavoriteSymbolsInsertionModalCommand(): void {
         this.addCommand({
             id: "open-favorite-symbols-insertion-modal",
-            name: "Open favorite symbol inserter",
+            name: "Open favorite symbols inserter",
             editorCallback: (editor: Editor, view: MarkdownView) => {
                 if (!view) {
                     return false;
