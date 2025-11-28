@@ -18,8 +18,8 @@ By going into the plugin's settings and pressing the button under `Set insertion
 - To swap the positions of two different cells within the `Favorite Symbols Table`, simply click one and then click another.
 
 There are two ways to use your favorite symbols:
-1. Use one of the ten numbered `Insert favorite symbol` commands, with each number corresponding to a cell within the favorite symbols table.
-2. Use the `Open favorite symbol inserter` command to open up a modal where you can access all ten favorite symbols. If you have an active Markdown document, simply click the cells to insert their corresponding symbol into your note.
+1. Use one of the ten numbered `Insert favorite symbol <number>` commands, with each number corresponding to a cell within the favorite symbols table.
+2. Use the `Open favorite symbols inserter` command to open up a modal where you can access all ten favorite symbols. If you have an active Markdown document, simply click the cells to insert their corresponding symbol into your note.
 
 ### Custom Symbol Group
 
@@ -34,6 +34,10 @@ To access your custom symbol group, simply use the `Open custom symbol group ins
 ### Search for Symbol Group
 
 If you know what specific symbol group you want to use and do not want to bother scrolling through the insertion modal to get to it, you can use the `Search for symbol group` command to find it quickly.
+
+### Insert Recent Symbols
+
+If you want to insert one of the last few unique symbols that were inserted via this plugin, you can access a table that contains those very values. One way is to access the general symbol inserter via the `Open symbol inserter` command, but for simpler access, you can just use the `Open recent symbols inserter` command to get that table by itself.
 
 ### Insert Last Used Symbol
 

@@ -24,9 +24,11 @@ export default class InsertSymbolPlugin extends Plugin {
         this.addOpenSymbolInsertionModalCommand();
         this.addOpenFavoriteSymbolsInsertionModalCommand();
         this.addOpenCustomSymbolGroupModalCommand();
-        this.addFavoriteSymbolCommands();
+        this.addOpenRecentSymbolsModalCommand();
         this.addInsertMostRecentSymbolCommand();
         this.addSearchForSymbolGroupCommand();
+        this.addFavoriteSymbolCommands();
+        
         this.addSettingTab(new InsertSymbolPluginSettingTab(this.app, this));
     }
     
@@ -107,6 +109,27 @@ export default class InsertSymbolPlugin extends Plugin {
                     editor,
                     this.settings.customSymbolGroup,
                     this.settings.customSymbolGroup.name
+                ).open();
+
+                return true;
+            }
+        });
+    }
+
+    private addOpenRecentSymbolsModalCommand(): void {
+        this.addCommand({
+            id: "open-recent-symbols-modal",
+            name: "Open recent symbols inserter",
+            editorCallback: (editor: Editor, view: MarkdownView) => {
+                if (!view) {
+                    return false;
+                }
+
+                new SymbolInsertionModal(
+                    this,
+                    editor,
+                    this.settings.recentSymbols,
+                    this.settings.recentSymbols.name
                 ).open();
 
                 return true;
