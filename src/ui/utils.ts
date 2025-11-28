@@ -11,11 +11,9 @@ export enum CssClass {
 }
 
 export enum Icon {
-    PLUS = "plus",
     TRASH = "trash-2",
     SWATCH_BOOK = "swatch-book",
-    TABLE = "table",
-    RESTORE = "archive-restore"
+    TABLE = "table"
 }
 
 export function swapOutClass(element: HTMLElement, classToRemove: string, classToAdd: string): void {
