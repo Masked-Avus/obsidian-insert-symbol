@@ -85,7 +85,7 @@ export default class InsertSymbolPlugin extends Plugin {
                     this,
                     editor,
                     this.settings.favoriteSymbols,
-                    "Favorite Symbols"
+                    this.settings.favoriteSymbols.name
                 ).open();
 
                 return true;
@@ -106,7 +106,7 @@ export default class InsertSymbolPlugin extends Plugin {
                     this,
                     editor,
                     this.settings.customSymbolGroup,
-                    "Custom Symbol Group"
+                    this.settings.customSymbolGroup.name
                 ).open();
 
                 return true;
