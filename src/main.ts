@@ -93,7 +93,7 @@ export default class InsertSymbolPlugin extends Plugin {
         });
     }
 
-    addOpenCustomSymbolGroupModalCommand(): void {
+    private addOpenCustomSymbolGroupModalCommand(): void {
         this.addCommand({
             id: "open-custom-symbol-group-modal",
             name: "Open custom symbol group inserter",
