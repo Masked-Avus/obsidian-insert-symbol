@@ -2,10 +2,8 @@ export enum CssClass {
     MODAL = "plugin-modal",
     TABLE = "symbol-table",
     TITLE_HEADING = "title-heading",
-    SETTINGS_HEADING = "settings-heading",
     TABLE_CELL = "symbol-table-cell",
-    SELECTED_TABLE_CELL = "selected-symbol-table-cell",
-    HELPER_TEXT = "helper-text"
+    SELECTED_TABLE_CELL = "selected-symbol-table-cell"
 }
 
 export enum Icon {
