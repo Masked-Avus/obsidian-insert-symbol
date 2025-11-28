@@ -8,7 +8,6 @@ import DynamicTableFactory from "../factories/dynamic-table-factory";
 import TableHeading from "../elements/heading";
 import Table from "../elements/table";
 import DynamicTable from "../elements/dynamic-table";
-import logError from "src/logging";
 
 export default class EditCustomSymbolGroupModal extends Modal {
     private static readonly TITLE: string = "Edit Custom Symbol Table";
@@ -117,7 +116,7 @@ class CustomSymbolTable {
                     this.tableRef = table;
                 }
                 else {
-                    logError(new Error("Expected DynamicTable but got another Table-derived type instead"));
+                    console.error("Expected DynamicTable but got another Table-derived type instead");
                 }
             }
         );

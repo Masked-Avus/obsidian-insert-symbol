@@ -1,5 +1,3 @@
-import logError from "src/logging";
-
 export enum CssClass {
     MODAL = "plugin-modal",
     TABLE = "symbol-table",
@@ -7,7 +5,7 @@ export enum CssClass {
     SETTINGS_HEADING = "settings-heading",
     TABLE_CELL = "symbol-table-cell",
     SELECTED_TABLE_CELL = "selected-symbol-table-cell",
-    HELPER_TEXT = "helper-text",
+    HELPER_TEXT = "helper-text"
 }
 
 export enum Icon {
@@ -23,7 +21,7 @@ export function swapOutClass(element: HTMLElement, classToRemove: string, classT
 
 export function overwriteTableRow(row: HTMLTableRowElement, symbols: string[]): void {
     if (row.cells.length !== symbols.length) {
-        logError(new Error(`Unequal number of row cells (${row.cells.length}) and available recent symbols (${symbols.length}).`));
+        console.error(`Unequal number of row cells (${row.cells.length}) and available recent symbols (${symbols.length}).`);
         return;
     }
 
