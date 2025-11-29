@@ -58,9 +58,8 @@ export default class EditCustomSymbolGroupModal extends Modal {
 
     private addClearTableButton(): void {
         new Setting(this.container)
-            .setName("Clear table")
             .addButton(button => button
-                .setIcon(Icon.TRASH)
+                .setButtonText("Clear custom table")
                 .onClick(async () => {
                     this.customTable.clear();
                     await this.plugin.saveSettings();

@@ -7,7 +7,6 @@ export enum CssClass {
 }
 
 export enum Icon {
-    TRASH = "trash-2",
     SWATCH_BOOK = "swatch-book",
     TABLE = "table"
 }
