@@ -2,9 +2,9 @@
 
 ## Overview
 
-Insert Symbol is a desktop-only plugin for Obsidian (https://obsidian.md) that provides a suite of functionality for inserting Unicode characters into notes.
+Insert Symbol is a desktop-only plugin for Obsidian (https://obsidian.md) that provides a suite of functionality for inserting UTF-16 characters into notes.
 
-Insert Symbol was inspired by the "Insert Symbol" functionality found in Microsoft Word. While Unicode symbols can be used within Obsidian, there is no native way to use additional characters without copying and pasting them from another document. This was especially inconvenient for my own projects, which occasionally require characters beyond those of a standard English keyboard.
+Insert Symbol was inspired by the "Insert Symbol" functionality found in Microsoft Word. While UTF-16 symbols can be used within Obsidian, there is no native way to use additional characters without copying and pasting them from another document. This was especially inconvenient for my own projects, which occasionally require characters beyond those of a standard English keyboard.
 
 ## Features
 ### Basic Insertion
@@ -13,7 +13,7 @@ To access all built-in symbol groups, use the `Open symbol inserter` command. Th
 
 ### Favorite Symbols
 
-By going into the plugin's settings and pressing the button under `Set insertion commands`, you can set 10 unique symbols as your favorites from the different built-in Unicode groups. 
+By going into the plugin's settings and pressing the button under `Set insertion commands`, you can set 10 unique symbols as your favorites from the different built-in UTF-16 groups. 
 - To assign a favorite symbol, click a cell in the `Favorite Symbols` table and then click a cell from another table, and the latter's value will be assigned to the former.
 - To swap the positions of two different cells within the `Favorite Symbols Table`, simply click one and then click another.
 
@@ -46,4 +46,5 @@ If you have inserted a symbol using any of this plugin's aforementioned modals o
 ## Installation
 
 1. Download the `obsidian-insert-symbol-plugin.zip` folder from one of this repository's releases.
-2. Extract the `main.js`, `styles.css`, and `manifest.json` files from `obsidian-insert-symbol.zip` into your vault at the path `VaultFolder/.obsidian/plugins/insert-symbol/`.
+2. Extract the `main.js`, `styles.css`, and `manifest.json` files from `obsidian-insert-symbol.zip` into your vault at the path `<VaultFolder>/.obsidian/plugins/insert-symbol/`.
+3. Update the `community-plugins.json` file found within the `<VaultFolder>/.obsidian/plugins/` directory with the `"name"` value of this plugin, which can be found in its `manifest.json`.
