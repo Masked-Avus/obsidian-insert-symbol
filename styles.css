@@ -39,10 +39,6 @@
 
 .title-heading {
     text-align: center;
-    border-style: solid;
-    border-color: black;
-    border-width: 100%;
-    border-width: var(--border-width);
     border-radius: var(--radius-m);
     padding: 4px;
 }
