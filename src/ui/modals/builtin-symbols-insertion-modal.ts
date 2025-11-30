@@ -81,25 +81,11 @@ class RecentSymbolsTable {
     }
 
     async update(symbol: string): Promise<void> {
-        const recentSymbols = this.plugin.settings.recentSymbols.symbols;
-        let found = false;
-
-        for (let i = 0; i < recentSymbols.length; i++) {
-            const recentSymbol = recentSymbols[i];
-
-            if (symbol === recentSymbol) {
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            updateRecentSymbols(this.plugin.settings, symbol);
-
+        if (updateRecentSymbols(this.plugin.settings, symbol)) {
             const firstRow = this.display.getRow(0);
 
             if (firstRow !== null) {
-                overwriteTableRow(firstRow, recentSymbols);
+                overwriteTableRow(firstRow, this.plugin.settings.recentSymbols.symbols);
             }
         }
     }

@@ -23,9 +23,27 @@ export const DEFAULT_SETTINGS: InsertSymbolPluginSettings = {
     collapseTablesByDefault: false
 }
 
-export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string) {
-    settings.recentSymbols.symbols.unshift(symbol);
-    settings.recentSymbols.symbols.pop();
+export function updateRecentSymbols(settings: InsertSymbolPluginSettings, symbol: string): boolean {
+    const recentSymbols = settings.recentSymbols.symbols;
+    let found = false;
+
+    for (let i = 0; i < recentSymbols.length; i++) {
+        const recentSymbol = recentSymbols[i];
+
+        if (symbol === recentSymbol) {
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        settings.recentSymbols.symbols.unshift(symbol);
+        settings.recentSymbols.symbols.pop();
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 export class InsertSymbolPluginSettingTab extends PluginSettingTab {
