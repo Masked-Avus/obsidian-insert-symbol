@@ -3,7 +3,7 @@
 	"name": "Insert Symbol",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Provides a means of inserting Unicode symbols via menu, command, and hotkey.",
+	"description": "Provides a means of inserting UTF-16 symbols via menu, command, or hotkey.",
 	"author": "Masked Avus",
 	"authorUrl": "https://github.com/Masked-Avus/obsidian-insert-symbol",
 	"isDesktopOnly": true
