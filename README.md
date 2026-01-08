@@ -45,6 +45,6 @@ If you have inserted a symbol using any of this plugin's aforementioned modals o
 
 ## Installation
 
-1. Download the `obsidian-insert-symbol-plugin.zip` folder from one of this repository's releases.
-2. Extract the `main.js`, `styles.css`, and `manifest.json` files from `obsidian-insert-symbol.zip` into your vault at the path `<VaultFolder>/.obsidian/plugins/insert-symbol/`.
-3. Update the `community-plugins.json` file found within the `<VaultFolder>/.obsidian/plugins/` directory with the `"name"` value of this plugin, which can be found in its `manifest.json`.
+1. Download the `main.js`, `styles.css`, and `manifest.json` files from one of this repository's releases.
+2. Add the above-mentioned files to into your vault of choice at the path `<VaultFolder>/.obsidian/plugins/insert-symbol/`.
+3. If it exists, update the `community-plugins.json` file found within the `<VaultFolder>/.obsidian/plugins/` directory with the `"name"` value of this plugin, which can be found in the `manifest.json`.
