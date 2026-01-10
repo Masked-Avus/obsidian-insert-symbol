@@ -3,7 +3,7 @@ import { CssClass, overwriteTableRow } from "../utils";
 import { updateRecentSymbols } from "../../settings";
 import InsertSymbolPlugin from "../../main";
 import SymbolTableDisplay from "../table-display";
-import SymbolTableCollection from "../table-collection";
+import SymbolTableCollection from "../symbol-table-collection";
 import StaticTableFactory from "../factories/static-table-factory";
 
 export default class BuiltinSymbolsInsertionModal extends Modal {

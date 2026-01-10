@@ -2,7 +2,7 @@ import { Modal, Setting } from "obsidian";
 import { CssClass } from "../utils";
 import InsertSymbolPlugin from "src/main";
 import SymbolTableDisplay from "../table-display";
-import SymbolTableCollection from "../table-collection";
+import SymbolTableCollection from "../symbol-table-collection";
 import SelectableCell from "../elements/selectable-cell";
 import DynamicTableFactory from "../factories/dynamic-table-factory";
 import TableHeading from "../elements/heading";
