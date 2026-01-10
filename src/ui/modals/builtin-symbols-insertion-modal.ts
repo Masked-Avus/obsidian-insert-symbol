@@ -2,7 +2,7 @@ import { Modal, Editor } from "obsidian";
 import { CssClass, overwriteTableRow } from "../utils";
 import { updateRecentSymbols } from "../../settings";
 import InsertSymbolPlugin from "../../main";
-import SymbolTableDisplay from "../table-display";
+import SymbolTableDisplay from "../symbol-table-display";
 import SymbolTableCollection from "../symbol-table-collection";
 import StaticTableFactory from "../factories/static-table-factory";
 

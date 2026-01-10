@@ -1,7 +1,7 @@
 import { Modal } from "obsidian";
 import { CssClass } from "../utils";
 import InsertSymbolPlugin from "../../main";
-import SymbolTableDisplay from "../table-display";
+import SymbolTableDisplay from "../symbol-table-display";
 import SymbolTableCollection from "../symbol-table-collection";
 import StaticTable from "../elements/static-table";
 import SelectableCell from "../elements/selectable-cell";
