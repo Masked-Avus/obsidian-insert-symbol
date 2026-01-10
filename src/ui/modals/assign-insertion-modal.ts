@@ -81,6 +81,8 @@ class InsertionCommandsAssignmentTable {
                 else {
                     this.selectCell(cell);
                 }
+
+                await this.plugin.saveSettings();
             },
             new StaticTableFactory(),
             this.plugin.settings.collapseTablesByDefault

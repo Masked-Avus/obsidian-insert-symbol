@@ -38,7 +38,7 @@ export default class BuiltinSymbolsInsertionModal extends Modal {
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
 
-                await this.recentSymbols.update(symbol);
+                this.recentSymbols.update(symbol);
 
                 await this.plugin.saveSettings();
                 this.plugin.lastSymbol = symbol;
@@ -74,13 +74,14 @@ class RecentSymbolsTable {
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
                 this.plugin.lastSymbol = symbol;
+                await this.plugin.saveSettings();
             },
             new StaticTableFactory(),
             this.plugin.settings.collapseTablesByDefault
         );
     }
 
-    async update(symbol: string): Promise<void> {
+    update(symbol: string): void {
         if (updateRecentSymbols(this.plugin.settings, symbol)) {
             const firstRow = this.display.getRow(0);
 
