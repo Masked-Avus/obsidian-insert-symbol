@@ -142,7 +142,7 @@ export default class InsertSymbolPlugin extends Plugin {
             this.addCommand({
                 id: `insert-favorite-symbol-${i + 1}`,
                 name: `Insert favorite symbol ${i + 1}`,
-                editorCallback: async (editor: Editor, view: MarkdownView) => {
+                editorCallback: (editor: Editor, view: MarkdownView) => {
                     if (!view) {
                         return false;
                     }

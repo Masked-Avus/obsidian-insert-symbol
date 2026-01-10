@@ -6,13 +6,13 @@ import StaticTableFactory from "./factories/static-table-factory";
 export default class SymbolTableCollection {
     private plugin: InsertSymbolPlugin;
     private container: HTMLElement;
-    private onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void;
+    private onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>;
     private tableFactory: StaticTableFactory = new StaticTableFactory();
 
     constructor(
         container: HTMLElement,
         plugin: InsertSymbolPlugin,
-        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void
+        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>
         ) {
         
         this.plugin = plugin;

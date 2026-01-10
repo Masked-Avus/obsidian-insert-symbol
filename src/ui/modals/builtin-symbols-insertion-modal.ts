@@ -38,7 +38,7 @@ export default class BuiltinSymbolsInsertionModal extends Modal {
             async (cell: HTMLTableCellElement, symbol: string) => {
                 this.editor.replaceSelection(cell.getText());
 
-                this.recentSymbols.update(symbol);
+                await this.recentSymbols.update(symbol);
 
                 await this.plugin.saveSettings();
                 this.plugin.lastSymbol = symbol;

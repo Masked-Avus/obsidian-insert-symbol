@@ -12,13 +12,12 @@ export default class SymbolTableDisplay {
     constructor(
         container: HTMLElement,
         symbols: SymbolGroup,
-        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void,
+        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>,
         tableFactory: TableFactory,
         displayCollapsed?: boolean,
         onElementsCreatedCallback?: (heading: TableHeading, table: Table) => void
         ) {
 
-        container = container;
         this.heading = new TableHeading(container, symbols.name);
         this.table = tableFactory.createTable(container, symbols.symbols, onClickCallback);
         this.break = new Break(container);

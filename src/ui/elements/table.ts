@@ -6,13 +6,13 @@ export default abstract class Table implements Displayable {
     public static readonly MAXIMUM_COLUMNS = 10;
 
     private readonly container: HTMLElement;
-    private readonly internalOnCellClickCallback: (cell: HTMLTableCellElement, symbol: string) => void;
+    private readonly internalOnCellClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>;
     private internalTableRef: HTMLTableElement;
 
     constructor(
         container: HTMLElement,
         contents: Utf16Symbol[],
-        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void
+        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>
         ) {
 
         this.container = container;
@@ -44,7 +44,7 @@ export default abstract class Table implements Displayable {
         return this.internalTableRef;
     }
 
-    protected get onCellClickCallback(): (cell: HTMLTableCellElement, symbol: string) => void {
+    protected get onCellClickCallback(): (cell: HTMLTableCellElement, symbol: string) => Promise<void> {
         return this.internalOnCellClickCallback;
     }
 

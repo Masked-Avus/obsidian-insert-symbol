@@ -5,7 +5,7 @@ export default class StaticTable extends Table {
     constructor(
         container: HTMLElement,
         contents: Utf16Symbol[],
-        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void
+        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>
         ) {
 
         super(container, contents, onClickCallback);

@@ -5,6 +5,6 @@ export default interface TableFactory {
     createTable(
         container: HTMLElement,
         contents: Utf16Symbol[],
-        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void
+        onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>
     ): Table;
 }

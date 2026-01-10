@@ -70,8 +70,8 @@ export class InsertSymbolPluginSettingTab extends PluginSettingTab {
 
     private addAssignInsertionCommandsButton(): void {
         new Setting(this.container)
-            .setName("Set insertion commands")
-            .setDesc("Assign which symbol is inserted when invoking one of the \"Insert favorite symbol\" commands.")
+            .setName("Edit favorite symbols table")
+            .setDesc(`Assign ten unique symbols to the "favorites" table.`)
             .addButton(button => button
                 .setIcon(Icon.SWATCH_BOOK)
                 .onClick(() => {

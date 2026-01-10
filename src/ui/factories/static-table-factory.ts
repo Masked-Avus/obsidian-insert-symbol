@@ -4,7 +4,7 @@ import TableFactory from "./types";
 import StaticTable from "../elements/static-table";
 
 export default class StaticTableFactory implements TableFactory {
-    createTable(container: HTMLElement, contents: Utf16Symbol[], onClickCallback: (cell: HTMLTableCellElement, symbol: string) => void): Table {
+    createTable(container: HTMLElement, contents: Utf16Symbol[], onClickCallback: (cell: HTMLTableCellElement, symbol: string) => Promise<void>): Table {
         return new StaticTable(container, contents, onClickCallback);
     }
 }

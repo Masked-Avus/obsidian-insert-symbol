@@ -64,7 +64,7 @@ class InsertionCommandsAssignmentTable {
         this.display = new SymbolTableDisplay(
             this.container,
             this.plugin.settings.favoriteSymbols,
-            (cell: HTMLTableCellElement) => {
+            async (cell: HTMLTableCellElement) => {
                 if (this.currentCell.isSelected() && !this.currentCell.equals(cell)) {
                     const temporary = this.currentCell.getText();
 
@@ -88,8 +88,6 @@ class InsertionCommandsAssignmentTable {
     }
 
     async updateSettings(symbol: string): Promise<void> {
-        const symbols = this.plugin.settings.favoriteSymbols.symbols;
-
         if (this.currentCell.isSelected()) {
             this.currentCell.setText(symbol);
 
